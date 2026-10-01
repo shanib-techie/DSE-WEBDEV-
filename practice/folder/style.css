@@ -1,0 +1,15 @@
+#header{
+    color: rgb(0, 247, 165);
+    width: max-content;
+    height: 300px;
+    border: 2px black;
+    border-radius: 5px;
+}
+h1{
+    color: blue;
+    background: black;
+    border: 5px;
+    border-color: brown;
+    border-radius: 5px;
+    
+}

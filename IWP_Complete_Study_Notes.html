@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to Web Programming — Complete Study Notes</title>
+<style>
+:root{
+  --bg:#0f1115;
+  --panel:#161922;
+  --panel2:#1b1f2a;
+  --text:#e7e9ee;
+  --muted:#9aa3b2;
+  --accent:#5fd0ff;
+  --accent2:#ffcb6b;
+  --accent3:#8bd17c;
+  --accent4:#ff8a8a;
+  --code-bg:#0b0d12;
+  --border:#2a3040;
+  --html-c:#ff8a65;
+  --css-c:#64b5f6;
+  --js-c:#ffd54f;
+  --jq-c:#81c784;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:'Segoe UI', Roboto, -apple-system, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.layout{display:flex;min-height:100vh;}
+nav.sidebar{
+  width:260px;
+  flex-shrink:0;
+  background:var(--panel);
+  border-right:1px solid var(--border);
+  padding:20px 14px;
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow-y:auto;
+}
+nav.sidebar h2{
+  font-size:13px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:18px 0 8px 6px;
+}
+nav.sidebar h2:first-child{margin-top:0;}
+nav.sidebar ul{list-style:none;margin:0;padding:0;}
+nav.sidebar li a{
+  display:block;
+  padding:6px 8px;
+  border-radius:6px;
+  font-size:14px;
+  color:var(--text);
+}
+nav.sidebar li a:hover{background:var(--panel2);text-decoration:none;}
+nav.sidebar .brand{
+  font-weight:700;
+  font-size:16px;
+  padding:6px 8px 14px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:10px;
+  color:var(--accent);
+}
+
+main{flex:1;padding:40px 60px;max-width:1100px;}
+
+.hero{
+  padding:30px 0 40px;
+  border-bottom:2px solid var(--border);
+  margin-bottom:40px;
+}
+.hero h1{font-size:36px;margin:0 0 10px;}
+.hero p{color:var(--muted);font-size:16px;max-width:760px;}
+.badge-row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;}
+.badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;}
+.badge.html{background:rgba(255,138,101,.15);color:var(--html-c);border:1px solid var(--html-c);}
+.badge.css{background:rgba(100,181,246,.15);color:var(--css-c);border:1px solid var(--css-c);}
+.badge.js{background:rgba(255,213,79,.15);color:var(--js-c);border:1px solid var(--js-c);}
+.badge.jq{background:rgba(129,199,132,.15);color:var(--jq-c);border:1px solid var(--jq-c);}
+
+section{margin-bottom:56px;scroll-margin-top:20px;}
+.unit-header{
+  display:flex;align-items:baseline;gap:14px;
+  padding-bottom:10px;border-bottom:1px solid var(--border);
+  margin-bottom:20px;
+}
+.unit-header .num{
+  font-size:14px;font-weight:700;color:var(--bg);
+  background:var(--accent);padding:3px 10px;border-radius:6px;
+}
+.unit-header h2{margin:0;font-size:26px;}
+.unit-header .hrs{color:var(--muted);font-size:13px;margin-left:auto;}
+
+h3.topic{
+  font-size:19px;margin:34px 0 8px;
+  color:var(--accent2);
+  border-left:3px solid var(--accent2);
+  padding-left:10px;
+}
+h4.sub{font-size:16px;margin:20px 0 6px;color:var(--text);}
+
+.why{
+  background:var(--panel2);
+  border-left:3px solid var(--accent3);
+  padding:10px 16px;
+  border-radius:0 6px 6px 0;
+  margin:10px 0 16px;
+  font-size:14.5px;
+}
+.why b{color:var(--accent3);}
+
+.note{
+  background:rgba(255,203,107,.08);
+  border:1px solid rgba(255,203,107,.3);
+  padding:10px 16px;border-radius:8px;
+  font-size:14px;margin:12px 0;
+}
+.note b{color:var(--accent2);}
+
+pre{
+  background:var(--code-bg);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:14px 16px;
+  overflow-x:auto;
+  font-size:13.5px;
+  margin:10px 0 18px;
+}
+code{
+  font-family:'Consolas','Courier New',monospace;
+}
+p code, li code, td code{
+  background:var(--panel2);
+  padding:1px 6px;
+  border-radius:4px;
+  color:var(--accent2);
+  font-size:13px;
+}
+.tag{color:#ff8a65;}
+.attr{color:#ffcb6b;}
+.str{color:#8bd17c;}
+.kw{color:#5fd0ff;}
+.cmt{color:#6b7180;font-style:italic;}
+.fn{color:#c792ea;}
+
+table{border-collapse:collapse;width:100%;margin:12px 0 20px;font-size:14px;}
+th,td{border:1px solid var(--border);padding:8px 12px;text-align:left;}
+th{background:var(--panel2);color:var(--accent);}
+tr:nth-child(even){background:rgba(255,255,255,.02);}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+@media(max-width:800px){.grid2,.grid3{grid-template-columns:1fr;}}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px 18px;
+}
+.card h5{margin:0 0 8px;color:var(--accent);font-size:15px;}
+
+.qa{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px 20px;
+  margin:14px 0;
+}
+.qa .q{font-weight:700;color:var(--accent2);margin-bottom:8px;}
+.qa .marks{float:right;color:var(--muted);font-size:12px;font-weight:400;}
+
+.project{
+  background:linear-gradient(145deg, var(--panel), var(--panel2));
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:22px 24px;
+  margin:20px 0;
+}
+.project h4{margin:0 0 4px;font-size:19px;color:var(--accent3);}
+.project .tags{margin:6px 0 12px;}
+.project .tags span{font-size:11px;margin-right:6px;color:var(--muted);}
+
+hr.div{border:none;border-top:1px solid var(--border);margin:40px 0;}
+
+.toc-mini{color:var(--muted);font-size:13px;}
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-thumb{background:#2a3040;border-radius:5px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+
+.event-table td:first-child{color:var(--accent2);font-family:monospace;}
+footer{padding:30px 60px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);}
+
+.output{
+  margin:-8px 0 18px;
+  border:1px solid rgba(139,209,124,.35);
+  border-top:none;
+  border-radius:0 0 8px 8px;
+  background:rgba(139,209,124,.06);
+  padding:10px 16px 12px;
+}
+.output .out-label{
+  font-size:11px;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  color:var(--accent3);
+  font-weight:700;
+  margin-bottom:8px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.output .out-label:before{content:"▶";font-size:10px;}
+.output .console{
+  font-family:'Consolas','Courier New',monospace;
+  font-size:13px;
+  color:#c7d0dd;
+  white-space:pre-wrap;
+  line-height:1.7;
+}
+.output .preview{
+  background:#ffffff;
+  color:#111;
+  border-radius:6px;
+  padding:14px 16px;
+  font-family:'Segoe UI',Arial,sans-serif;
+  font-size:14px;
+}
+.output .preview table{color:#111;}
+.output .preview th, .output .preview td{border-color:#999;}
+.output .note-line{font-size:12.5px;color:var(--muted);margin-top:6px;}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<nav class="sidebar">
+  <div class="brand">📘 IWP Notes</div>
+
+  <h2>Start</h2>
+  <ul>
+    <li><a href="#overview">Course Overview</a></li>
+  </ul>
+
+  <h2>Unit 1</h2>
+  <ul>
+    <li><a href="#u1">Internet & Web Architecture</a></li>
+  </ul>
+
+  <h2>Unit 2 — HTML</h2>
+  <ul>
+    <li><a href="#u2-basics">Structure & Formatting</a></li>
+    <li><a href="#u2-lists">Lists</a></li>
+    <li><a href="#u2-links">Links & Images</a></li>
+    <li><a href="#u2-div">Div & Semantic Tags</a></li>
+    <li><a href="#u2-tables">Tables</a></li>
+    <li><a href="#u2-forms">Forms</a></li>
+  </ul>
+
+  <h2>Unit 3 — CSS</h2>
+  <ul>
+    <li><a href="#u3-intro">CSS Basics & Types</a></li>
+    <li><a href="#u3-selectors">Selectors</a></li>
+    <li><a href="#u3-box">Box Model</a></li>
+    <li><a href="#u3-layout">Layout & Display</a></li>
+  </ul>
+
+  <h2>Unit 4 — JavaScript</h2>
+  <ul>
+    <li><a href="#u4-basics">Syntax, Vars, Data Types</a></li>
+    <li><a href="#u4-operators">Operators</a></li>
+    <li><a href="#u4-control">Control Flow</a></li>
+    <li><a href="#u4-functions">Functions</a></li>
+    <li><a href="#u4-dom">DOM</a></li>
+    <li><a href="#u4-events">Events</a></li>
+    <li><a href="#u4-validation">Form Validation</a></li>
+  </ul>
+
+  <h2>Unit 5 — jQuery & JSON</h2>
+  <ul>
+    <li><a href="#u5-jquery">jQuery Basics</a></li>
+    <li><a href="#u5-selectors">jQuery Selectors</a></li>
+    <li><a href="#u5-events">jQuery Events</a></li>
+    <li><a href="#u5-json">JSON</a></li>
+  </ul>
+
+  <h2>Exam</h2>
+  <ul>
+    <li><a href="#paper">Solved Paper (6118)</a></li>
+  </ul>
+
+  <h2>Practice</h2>
+  <ul>
+    <li><a href="#projects">Mini Projects (9-mark style)</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<div class="hero" id="overview">
+  <h1>Introduction to Web Programming</h1>
+  <p>Complete concept-by-concept notes built from your GE-4b syllabus, textbook guidelines, and the 2026 exam
+  paper (6118). Every topic below explains <b>what it is</b>, <b>why it exists / what problem it solves</b>,
+  and <b>how it works</b>, with runnable code examples. Depth order: JavaScript & jQuery are covered in the
+  most detail, then CSS, then HTML.</p>
+  <div class="badge-row">
+    <span class="badge html">HTML — structure</span>
+    <span class="badge css">CSS — presentation</span>
+    <span class="badge js">JavaScript — behaviour</span>
+    <span class="badge jq">jQuery/JSON — tooling & data</span>
+  </div>
+</div>
+
+<section id="u1">
+  <div class="unit-header">
+    <span class="num">UNIT 1</span>
+    <h2>Introduction to Internet & Web Architecture</h2>
+    <span class="hrs">5 hrs</span>
+  </div>
+
+  <h3 class="topic">What is the Internet, and what is the Web?</h3>
+  <p>The <b>Internet</b> is a global network of interconnected computers that communicate using a common set of
+  rules (protocols like TCP/IP). The <b>World Wide Web (WWW)</b> is <i>one service that runs on top of the
+  Internet</i> — a system of linked documents (webpages) accessed via HTTP/HTTPS. Email, FTP, and video calls
+  also run on the Internet but are not "the Web".</p>
+  <div class="why"><b>Why this distinction matters:</b> exam questions like "differentiate between web browser
+  and web server" are really testing whether you understand that the Web is a client–server system running
+  over the Internet, not the Internet itself.</div>
+
+  <h3 class="topic">Client–Server Architecture</h3>
+  <p>Every website interaction follows a request–response cycle:</p>
+  <table>
+    <tr><th>Term</th><th>What it is</th><th>Example</th></tr>
+    <tr><td><b>Client / Web Browser</b></td><td>Software that <i>requests</i> a page and renders (displays) the HTML/CSS/JS it receives.</td><td>Chrome, Firefox, Edge</td></tr>
+    <tr><td><b>Web Server</b></td><td>A machine/program that <i>stores</i> website files and <i>responds</i> to requests by sending them back.</td><td>Apache, Nginx, IIS</td></tr>
+    <tr><td><b>HTTP/HTTPS</b></td><td>The protocol (rules) used for the request–response conversation. HTTPS = HTTP + encryption.</td><td>https://example.com</td></tr>
+    <tr><td><b>URL</b></td><td>The address that identifies a resource on the web.</td><td>https://www.college.edu/about.html</td></tr>
+    <tr><td><b>DNS</b></td><td>Translates human-readable domain names into IP addresses.</td><td>google.com → 142.250.xx.xx</td></tr>
+  </table>
+  <div class="why"><b>Why it matters:</b> the browser <i>never runs your JavaScript on the server</i> — it
+  downloads HTML/CSS/JS and executes them locally. That's why we call this course "client-side" web
+  programming — everything you write (HTML/CSS/JS/jQuery) executes inside the user's browser, not on the server.</div>
+
+  <h3 class="topic">Static vs Dynamic Websites</h3>
+  <ul>
+    <li><b>Static website:</b> same content for every visitor; pure HTML/CSS (and maybe JS for interactivity). No database.</li>
+    <li><b>Dynamic website:</b> content changes based on user, time, or database (needs a server-side language like PHP/Node/Python + database). JavaScript can make a static page <i>feel</i> dynamic (DOM updates) but that's still client-side.</li>
+  </ul>
+
+  <h3 class="topic">Planning a Website</h3>
+  <p>Before writing code, a real project goes through:</p>
+  <ol>
+    <li><b>Purpose & audience</b> — what problem does the site solve, for whom?</li>
+    <li><b>Site map / information architecture</b> — list of pages and how they link together (Home → About → Courses → Contact).</li>
+    <li><b>Wireframe</b> — rough sketch of layout (header, nav, main content, footer) before styling.</li>
+    <li><b>Content gathering</b> — text, images.</li>
+    <li><b>Build → Test → Publish (host) → Maintain.</b></li>
+  </ol>
+  <div class="why"><b>Why this matters for exams:</b> Q1(b)-type questions ("design a webpage with a list") are
+  really asking you to translate a small plan into working markup — always mentally sketch structure before
+  typing tags.</div>
+</section>
+
+<section id="u2-basics">
+  <div class="unit-header">
+    <span class="num">UNIT 2</span>
+    <h2>HTML — Structure & Text Formatting</h2>
+    <span class="hrs">12 hrs</span>
+  </div>
+
+  <h3 class="topic">What HTML actually is</h3>
+  <p><b>HTML (HyperText Markup Language)</b> is not a programming language — it has no logic, loops, or
+  variables. It is a <b>markup</b> language: you wrap content in <b>tags</b> to tell the browser what that
+  content <i>means</i> (a heading, a paragraph, a list) so the browser knows how to render and structure it.</p>
+  <div class="why"><b>Why tags come in pairs:</b> most tags have an opening <code>&lt;tag&gt;</code> and closing
+  <code>&lt;/tag&gt;</code> so the browser knows exactly where an element's content starts and ends — this
+  lets elements <i>nest</i> inside each other, which is how complex layouts are built from simple pieces.</div>
+
+  <h4 class="sub">The Skeleton of Every HTML Document</h4>
+  <pre><code><span class="tag">&lt;!DOCTYPE html&gt;</span>          <span class="cmt">&lt;!-- tells browser: use modern HTML5 rules --&gt;</span>
+<span class="tag">&lt;html&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Page Title<span class="tag">&lt;/title&gt;</span>   <span class="cmt">&lt;!-- shows in browser tab, not on page --&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="cmt">&lt;!-- everything visible on the page goes here --&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><div style="color:#888;font-size:12px;">Browser tab: <b>Page Title</b></div><div style="border:1px dashed #ccc;margin-top:6px;padding:20px;text-align:center;color:#999;">(empty page body — nothing added yet)</div></div></div>
+  <div class="why"><b>Why &lt;head&gt; vs &lt;body&gt;:</b> &lt;head&gt; holds metadata (title, CSS links,
+  character encoding) — information <i>about</i> the page. &lt;body&gt; holds everything the user actually
+  sees. Mixing them up is a very common beginner mistake.</div>
+
+  <h4 class="sub">Text Formatting Tags</h4>
+  <table>
+    <tr><th>Tag</th><th>Purpose</th></tr>
+    <tr><td><code>&lt;b&gt;</code></td><td>Bold text — <i>visual only</i>, no semantic meaning</td></tr>
+    <tr><td><code>&lt;strong&gt;</code></td><td>Bold text that is also semantically "important" (screen readers emphasize it)</td></tr>
+    <tr><td><code>&lt;i&gt;</code></td><td>Italic — visual only</td></tr>
+    <tr><td><code>&lt;em&gt;</code></td><td>Italic + semantic "emphasis"</td></tr>
+    <tr><td><code>&lt;u&gt;</code></td><td>Underline</td></tr>
+    <tr><td><code>&lt;h1&gt;…&lt;h6&gt;</code></td><td>Headings, h1 = most important/largest, h6 = least</td></tr>
+    <tr><td><code>&lt;p&gt;</code></td><td>Paragraph (block of text, browser adds space before/after)</td></tr>
+    <tr><td><code>&lt;br&gt;</code></td><td>Single line break (no closing tag — it's an "empty" element)</td></tr>
+    <tr><td><code>&lt;hr&gt;</code></td><td>Horizontal rule — a divider line</td></tr>
+    <tr><td><code>&lt;marquee&gt;</code></td><td>Scrolling text (obsolete, but syllabus/exam still references it)</td></tr>
+  </table>
+  <div class="note"><b>Exam-important:</b> <code>&lt;b&gt;</code> vs <code>&lt;strong&gt;</code> and
+  <code>&lt;i&gt;</code> vs <code>&lt;em&gt;</code> is a classic "differentiate" question. The answer is always:
+  <i>identical default appearance, but the second one of each pair carries semantic meaning</i> (matters for
+  SEO and accessibility/screen readers).</div>
+
+  <h4 class="sub">Inline Styling Attributes (font, color, background — pre-CSS way)</h4>
+  <pre><code><span class="tag">&lt;p</span> <span class="attr">style</span>=<span class="str">"font-size:30px; font-family:Arial; color:yellow;"</span><span class="tag">&gt;</span>
+  Welcome to my Webpage
+<span class="tag">&lt;/p&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview" style="background:#20242e;color:#eee;"><p style="font-size:30px;font-family:Arial;color:yellow;margin:0;">Welcome to my Webpage</p></div></div>
+  <div class="why"><b>Why this exact syntax matters:</b> this is literally 2026 paper Q1(a) — font size,
+  font family, font colour must be set with a single <code>style</code> attribute containing CSS
+  property:value pairs separated by semicolons.</div>
+
+  <h4 class="sub">Comments</h4>
+  <pre><code><span class="cmt">&lt;!-- this text is invisible to the user, only visible in source code --&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">(nothing — comments never appear on the rendered page, only in "View Source")</div></div>
+</section>
+
+<section id="u2-lists">
+  <h3 class="topic">Lists — Ordered & Unordered</h3>
+  <div class="why"><b>Why lists exist:</b> grouping related items (menu items, steps, features) as a list is
+  more meaningful to both users and screen readers than separating them with &lt;br&gt; tags.</div>
+  <div class="grid2">
+    <div class="card">
+      <h5>Unordered list — &lt;ul&gt;</h5>
+      <pre><code><span class="tag">&lt;ul&gt;</span>
+  <span class="tag">&lt;li&gt;</span>HTML<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>CSS<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><ul style="margin:0;padding-left:20px;"><li>HTML</li><li>CSS</li></ul></div></div>
+      <p style="font-size:13px;color:var(--muted)">Renders bullet points. Use when order doesn't matter.</p>
+    </div>
+    <div class="card">
+      <h5>Ordered list — &lt;ol&gt;</h5>
+      <pre><code><span class="tag">&lt;ol&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Step 1<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Step 2<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><ol style="margin:0;padding-left:20px;"><li>Step 1</li><li>Step 2</li></ol></div></div>
+      <p style="font-size:13px;color:var(--muted)">Renders numbers. Use when sequence matters.</p>
+    </div>
+  </div>
+  <p><b>Nested list</b> (2026 paper style — "I Web Development" with sub-bullets HTML, CSS):</p>
+  <pre><code><span class="tag">&lt;ul&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Web Development
+    <span class="tag">&lt;ul&gt;</span>
+      <span class="tag">&lt;li&gt;</span>HTML<span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li&gt;</span>CSS<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;/ul&gt;</span>
+  <span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><ul style="margin:0;padding-left:20px;"><li>Web Development<ul style="padding-left:20px;"><li>HTML</li><li>CSS</li></ul></li></ul></div></div>
+  <div class="why">A &lt;ul&gt; placed <i>inside</i> an &lt;li&gt; creates a sub-list — this is how you build
+  nested/indented lists, e.g. a table of contents.</div>
+</section>
+
+<section id="u2-links">
+  <h3 class="topic">Links & Images</h3>
+  <h4 class="sub">Hyperlinks — &lt;a&gt;</h4>
+  <pre><code><span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"https://college.edu"</span> <span class="attr">target</span>=<span class="str">"_blank"</span><span class="tag">&gt;</span>Visit College<span class="tag">&lt;/a&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><a href="#" style="color:#1a73e8;">Visit College</a></div><div class="note-line">Clicking it opens college.edu in a brand-new browser tab (because of target="_blank").</div></div>
+  <table>
+    <tr><th>Attribute</th><th>Purpose</th></tr>
+    <tr><td><code>href</code></td><td>Destination URL (external site, another page, or <code>#id</code> for same-page jump)</td></tr>
+    <tr><td><code>target="_blank"</code></td><td>Opens link in a <b>new tab</b> — this is the exam-favourite "hyperlink that opens in a new tab"</td></tr>
+  </table>
+  <div class="why"><b>Internal vs External linking:</b> <i>External</i> = href points to another website
+  (<code>https://...</code>). <i>Internal</i> = href points to another page/section of the <b>same</b> site,
+  e.g. <code>href="contact.html"</code> (another file) or <code>href="#section2"</code> (jumps to an element
+  with <code>id="section2"</code> on the same page).</div>
+
+  <h4 class="sub">Images — &lt;img&gt;</h4>
+  <pre><code><span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="str">"logo.png"</span> <span class="attr">alt</span>=<span class="str">"College Logo"</span> <span class="attr">width</span>=<span class="str">"120"</span><span class="tag">&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><div style="display:inline-block;border:1px solid #ccc;padding:30px 40px;color:#888;font-size:12px;text-align:center;">🖼️<br>College Logo</div></div><div class="note-line">Shows the image logo.png at 120px wide. If the file is missing, the browser shows a broken-image icon plus the alt text "College Logo" instead.</div></div>
+  <div class="why"><b>Why <code>alt</code> is required:</b> shown if the image fails to load, and read aloud
+  by screen readers — it's the accessible text description of the image, and examiners specifically check for it.</div>
+  <p><b>Image as a clickable icon</b> (wrap &lt;img&gt; inside &lt;a&gt;):</p>
+  <pre><code><span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"https://facebook.com"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="str">"fb-icon.png"</span> <span class="attr">alt</span>=<span class="str">"Facebook"</span> <span class="attr">width</span>=<span class="str">"30"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/a&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><a href="#" style="display:inline-block;"><div style="display:inline-block;border:1px solid #ccc;padding:8px 10px;color:#888;font-size:11px;">📘</div></a></div><div class="note-line">A small clickable icon — clicking it navigates to facebook.com, exactly like a text link would.</div></div>
+  <p><b>Image as table cell data / background</b> — covered in the Tables section below.</p>
+</section>
+
+<section id="u2-div">
+  <h3 class="topic">The &lt;div&gt; Element & Semantic Layout Tags</h3>
+  <div class="why"><b>Why &lt;div&gt; exists:</b> it is a generic, invisible "box" with no meaning of its own —
+  used purely to <i>group</i> other elements so you can style or position them together as one unit (e.g. a
+  whole navigation bar, a card, a section).</div>
+  <pre><code><span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"top"</span><span class="tag">&gt;</span>My Webpage<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"bottom"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"left"</span><span class="tag">&gt;</span>Table of contents<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"right"</span><span class="tag">&gt;</span>Main Content<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><div>My Webpage</div><div><div>Table of contents</div><div>Main Content</div></div></div><div class="note-line">Every &lt;div&gt; is a block element, so — with no CSS applied yet — each one simply stacks on its own line, full width.</div></div>
+  <div class="note"><b>Exam pattern (2026 Q5a):</b> "divide the browser window into two horizontal sections,
+  bottom split into left/right" — this is solved purely with nested &lt;div&gt;s + CSS
+  (<code>display:flex</code> or floats) — full solution is in the Solved Paper section below.</div>
+
+  <h4 class="sub">Semantic Tags (HTML5) — meaningful alternatives to &lt;div&gt;</h4>
+  <p>Semantic tags look and behave like &lt;div&gt; by default but <i>tell the browser/search engines/screen
+  readers what role that block plays</i> in the page — this is the modern replacement for "divitis" (using
+  &lt;div&gt; for everything).</p>
+  <table>
+    <tr><th>Tag</th><th>Meaning</th></tr>
+    <tr><td><code>&lt;header&gt;</code></td><td>Introductory content / page or section banner (logo, site title)</td></tr>
+    <tr><td><code>&lt;nav&gt;</code></td><td>Block of navigation links</td></tr>
+    <tr><td><code>&lt;main&gt;</code></td><td>The dominant, unique content of the page (one per page)</td></tr>
+    <tr><td><code>&lt;section&gt;</code></td><td>A thematic grouping of content, usually with its own heading</td></tr>
+    <tr><td><code>&lt;footer&gt;</code></td><td>Footer info (copyright, contact) for its nearest section/page</td></tr>
+    <tr><td><code>&lt;details&gt;</code></td><td>A collapsible widget the user can open/close (native, no JS needed)</td></tr>
+    <tr><td><code>&lt;summary&gt;</code></td><td>The always-visible heading/toggle of a &lt;details&gt; block</td></tr>
+    <tr><td><code>&lt;figure&gt;</code></td><td>Wraps self-contained media (image, chart) + its caption</td></tr>
+    <tr><td><code>&lt;figcaption&gt;</code></td><td>Caption text for the &lt;figure&gt;</td></tr>
+  </table>
+  <pre><code><span class="tag">&lt;header&gt;&lt;h1&gt;</span>My College<span class="tag">&lt;/h1&gt;&lt;/header&gt;</span>
+<span class="tag">&lt;nav&gt;</span>
+  <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"#"</span><span class="tag">&gt;</span>Home<span class="tag">&lt;/a&gt;</span> |
+  <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"#"</span><span class="tag">&gt;</span>Courses<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;/nav&gt;</span>
+<span class="tag">&lt;main&gt;</span>
+  <span class="tag">&lt;section&gt;</span>
+    <span class="tag">&lt;h2&gt;</span>About Us<span class="tag">&lt;/h2&gt;</span>
+    <span class="tag">&lt;p&gt;</span>...<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/section&gt;</span>
+  <span class="tag">&lt;figure&gt;</span>
+    <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="str">"campus.jpg"</span> <span class="attr">alt</span>=<span class="str">"Campus"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;figcaption&gt;</span>Main campus building<span class="tag">&lt;/figcaption&gt;</span>
+  <span class="tag">&lt;/figure&gt;</span>
+  <span class="tag">&lt;details&gt;</span>
+    <span class="tag">&lt;summary&gt;</span>Admission Criteria<span class="tag">&lt;/summary&gt;</span>
+    <span class="tag">&lt;p&gt;</span>Pass Class XII with 60%...<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/details&gt;</span>
+<span class="tag">&lt;/main&gt;</span>
+<span class="tag">&lt;footer&gt;&lt;p&gt;</span>&copy; 2026 College<span class="tag">&lt;/p&gt;&lt;/footer&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><div style="font-weight:bold;font-size:18px;">My College</div><div style="margin:6px 0;"><a href="#" style="color:#1a73e8;">Home</a> | <a href="#" style="color:#1a73e8;">Courses</a></div><div style="border-top:1px solid #ddd;padding-top:8px;"><h4 style="margin:4px 0;">About Us</h4><p style="margin:2px 0;color:#555;">...</p><div style="margin:8px 0;color:#555;">🖼️ Campus photo<br><i style="font-size:12px;">Main campus building</i></div><details style="margin-top:8px;"><summary>Admission Criteria</summary><p style="font-size:13px;">Pass Class XII with 60%...</p></details></div><div style="border-top:1px solid #ddd;margin-top:8px;padding-top:6px;font-size:12px;color:#777;">© 2026 College</div></div><div class="note-line">&lt;details&gt; renders as a collapsible arrow — the "Pass Class XII..." line only appears once the user clicks "Admission Criteria".</div></div>
+
+  <h4 class="sub">id vs class (attributes used everywhere — HTML, CSS, JS, jQuery)</h4>
+  <table>
+    <tr><th></th><th><code>id</code></th><th><code>class</code></th></tr>
+    <tr><td>Uniqueness</td><td>Must be <b>unique</b> — only one element per page</td><td>Can be reused on <b>many</b> elements</td></tr>
+    <tr><td>CSS selector</td><td><code>#myid { }</code></td><td><code>.myclass { }</code></td></tr>
+    <tr><td>Typical use</td><td>One specific element (e.g. the main header, a single form)</td><td>A group that shares styling (e.g. all buttons, all cards)</td></tr>
+    <tr><td>JS/jQuery access</td><td><code>getElementById()</code> / <code>$("#myid")</code></td><td><code>getElementsByClassName()</code> / <code>$(".myclass")</code></td></tr>
+  </table>
+</section>
+
+<section id="u2-tables">
+  <h3 class="topic">Tables</h3>
+  <div class="why"><b>Why tables exist:</b> for displaying genuinely tabular/grid data (timetables,
+  price lists) — rows and columns with real relationships between cells. (Never use tables just for page
+  layout — that's what CSS/divs are for.)</div>
+  <pre><code><span class="tag">&lt;table</span> <span class="attr">border</span>=<span class="str">"1"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>                         <span class="cmt">&lt;!-- table row --&gt;</span>
+    <span class="tag">&lt;th&gt;</span>Day<span class="tag">&lt;/th&gt;</span>            <span class="cmt">&lt;!-- table header cell (bold, centered) --&gt;</span>
+    <span class="tag">&lt;th&gt;</span>Period 1<span class="tag">&lt;/th&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Monday<span class="tag">&lt;/td&gt;</span>       <span class="cmt">&lt;!-- table data cell --&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Math<span class="tag">&lt;/td&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+<span class="tag">&lt;/table&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><table border="1" style="border-collapse:collapse;"><tr><th style="padding:6px;">Day</th><th style="padding:6px;">Period 1</th></tr><tr><td style="padding:6px;">Monday</td><td style="padding:6px;">Math</td></tr></table></div></div>
+
+  <h4 class="sub">rowspan and colspan</h4>
+  <div class="why"><b>What problem they solve:</b> normally every row needs the same number of &lt;td&gt;
+  cells to line up in a grid. When one label logically applies to <i>multiple rows or columns</i> (e.g. "Monday"
+  applies to 2 rows of periods), you merge cells instead of repeating the label.</div>
+  <table>
+    <tr><th>Attribute</th><th>Meaning</th></tr>
+    <tr><td><code>rowspan="2"</code></td><td>This cell stretches down and occupies 2 <b>rows</b> (vertically merges)</td></tr>
+    <tr><td><code>colspan="2"</code></td><td>This cell stretches across and occupies 2 <b>columns</b> (horizontally merges)</td></tr>
+  </table>
+  <p><b>Rule:</b> when a cell uses rowspan/colspan, the rows below/beside it must have <i>one fewer</i>
+  &lt;td&gt; to keep column count balanced.</p>
+  <pre><code><span class="tag">&lt;table</span> <span class="attr">border</span>=<span class="str">"1"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;th&gt;</span>Day<span class="tag">&lt;/th&gt;</span><span class="tag">&lt;th&gt;</span>Period 1<span class="tag">&lt;/th&gt;</span><span class="tag">&lt;th&gt;</span>Period 2<span class="tag">&lt;/th&gt;</span><span class="tag">&lt;th&gt;</span>Period 3<span class="tag">&lt;/th&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;td</span> <span class="attr">rowspan</span>=<span class="str">"2"</span><span class="tag">&gt;</span>Monday<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Math<span class="tag">&lt;/td&gt;</span><span class="tag">&lt;td&gt;</span>English<span class="tag">&lt;/td&gt;</span><span class="tag">&lt;td&gt;</span>Science<span class="tag">&lt;/td&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;td</span> <span class="attr">colspan</span>=<span class="str">"2"</span><span class="tag">&gt;</span>History and Art<span class="tag">&lt;/td&gt;</span><span class="tag">&lt;td&gt;</span>Music<span class="tag">&lt;/td&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+<span class="tag">&lt;/table&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><table border="1" style="border-collapse:collapse;"><tr><th style="padding:6px;">Day</th><th style="padding:6px;">Period 1</th><th style="padding:6px;">Period 2</th><th style="padding:6px;">Period 3</th></tr><tr><td rowspan="2" style="padding:6px;">Monday</td><td style="padding:6px;">Math</td><td style="padding:6px;">English</td><td style="padding:6px;">Science</td></tr><tr><td colspan="2" style="padding:6px;">History and Art</td><td style="padding:6px;">Music</td></tr></table></div><div class="note-line">Notice "Monday" visually spans both rows, and "History and Art" visually spans two columns.</div></div>
+  <p style="font-size:13px;color:var(--muted)">↑ Note row 2 only has 3 &lt;td&gt;s because Monday (rowspan=2) already fills the first column. Row 3 only has 2 &lt;td&gt;s because colspan=2 covers 2 columns in one cell.</p>
+
+  <h4 class="sub">Images/background inside tables + CSS colours</h4>
+  <pre><code><span class="tag">&lt;td&gt;&lt;img</span> <span class="attr">src</span>=<span class="str">"icon.png"</span> <span class="attr">alt</span>=<span class="str">"icon"</span><span class="tag">&gt;&lt;/td&gt;</span>   <span class="cmt">&lt;!-- image as cell data --&gt;</span>
+
+<span class="cmt">/* in CSS */</span>
+<span class="fn">table</span> { <span class="attr">background-color</span>: <span class="str">lightyellow</span>; }
+<span class="fn">td</span> { <span class="attr">color</span>: <span class="str">darkblue</span>; }</code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><table style="background:lightyellow;border-collapse:collapse;"><tr><td style="color:darkblue;padding:8px;">🖼️ icon</td></tr></table></div><div class="note-line">The whole table gets a light-yellow background; text inside cells turns dark blue.</div></div>
+</section>
+
+<section id="u2-forms">
+  <h3 class="topic">Web Forms</h3>
+  <div class="why"><b>Why forms exist:</b> they are the mechanism for <i>collecting user input</i> — every
+  login page, search bar, and registration page is built from &lt;form&gt; and input controls. This is also
+  the bridge to JavaScript, since JS is what reacts to and validates that input.</div>
+  <pre><code><span class="tag">&lt;form&gt;</span>
+
+  <span class="cmt">&lt;!-- a. Text Box --&gt;</span>
+  <span class="tag">&lt;label&gt;</span>Name:<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span> <span class="attr">id</span>=<span class="str">"name"</span> <span class="attr">name</span>=<span class="str">"name"</span><span class="tag">&gt;&lt;br&gt;&lt;br&gt;</span>
+
+  <span class="cmt">&lt;!-- b. Text Area (multi-line input) --&gt;</span>
+  <span class="tag">&lt;label&gt;</span>Address:<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;textarea</span> <span class="attr">rows</span>=<span class="str">"3"</span> <span class="attr">cols</span>=<span class="str">"30"</span><span class="tag">&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;</span>
+
+  <span class="cmt">&lt;!-- c. Dropdown box --&gt;</span>
+  <span class="tag">&lt;label&gt;</span>Course:<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;select&gt;</span>
+    <span class="tag">&lt;option&gt;</span>BSc CS<span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;option&gt;</span>BCA<span class="tag">&lt;/option&gt;</span>
+  <span class="tag">&lt;/select&gt;&lt;br&gt;&lt;br&gt;</span>
+
+  <span class="cmt">&lt;!-- d. Option/radio buttons (only ONE can be picked — same 'name') --&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"radio"</span> <span class="attr">name</span>=<span class="str">"gender"</span> <span class="attr">value</span>=<span class="str">"M"</span><span class="tag">&gt;</span>Male
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"radio"</span> <span class="attr">name</span>=<span class="str">"gender"</span> <span class="attr">value</span>=<span class="str">"F"</span><span class="tag">&gt;</span>Female<span class="tag">&lt;br&gt;&lt;br&gt;</span>
+
+  <span class="cmt">&lt;!-- e. Check boxes (MULTIPLE can be picked) --&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"checkbox"</span> <span class="attr">name</span>=<span class="str">"hobby"</span> <span class="attr">value</span>=<span class="str">"music"</span><span class="tag">&gt;</span>Music
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"checkbox"</span> <span class="attr">name</span>=<span class="str">"hobby"</span> <span class="attr">value</span>=<span class="str">"sports"</span><span class="tag">&gt;</span>Sports<span class="tag">&lt;br&gt;&lt;br&gt;</span>
+
+  <span class="cmt">&lt;!-- f. Reset and Submit buttons --&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"submit"</span> <span class="attr">value</span>=<span class="str">"Submit"</span> <span class="attr">onclick</span>=<span class="str">"alert('Form submitted'); return false;"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"reset"</span> <span class="attr">value</span>=<span class="str">"Reset"</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;/form&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><div style="font-size:13px;">Name: <input style="width:120px;" disabled><br><br>Address:<br><textarea style="width:160px;height:40px;" disabled></textarea><br><br>Course: <select disabled><option>BSc CS</option><option>BCA</option></select><br><br><input type="radio" disabled> Male &nbsp;<input type="radio" disabled> Female<br><br><input type="checkbox" disabled> Music &nbsp;<input type="checkbox" disabled> Sports<br><br><button disabled>Submit</button> <button disabled>Reset</button></div></div><div class="note-line">Clicking Submit runs the alert "Form submitted" and — because onclick returns false — the page does NOT actually reload/navigate.</div></div>
+
+  <h4 class="sub">Why every input needs a "name" attribute</h4>
+  <div class="why">The <code>name</code> attribute is what gets sent to a server / read by JavaScript as the
+  key for that field's value. <code>id</code> is used for labels/CSS/JS-DOM targeting — <b>id and name serve
+  different jobs and a form control commonly needs both.</b> Radio buttons in the same group MUST share the
+  same <code>name</code> so the browser knows only one of them can be selected at a time.</div>
+
+  <h4 class="sub">Important input types</h4>
+  <table>
+    <tr><th>type</th><th>Purpose</th></tr>
+    <tr><td><code>text</code></td><td>Single-line free text</td></tr>
+    <tr><td><code>password</code></td><td>Single-line text, characters masked</td></tr>
+    <tr><td><code>email</code></td><td>Text + browser does basic built-in email-format checking</td></tr>
+    <tr><td><code>number</code></td><td>Numeric spinner input</td></tr>
+    <tr><td><code>radio</code></td><td>Pick exactly one from a group</td></tr>
+    <tr><td><code>checkbox</code></td><td>Pick zero or more</td></tr>
+    <tr><td><code>submit</code></td><td>Sends the form</td></tr>
+    <tr><td><code>reset</code></td><td>Clears the form back to defaults</td></tr>
+  </table>
+
+  <h4 class="sub">Frames (older technique, still in syllabus)</h4>
+  <div class="why"><b>What frames do:</b> split the browser window into independently-scrollable
+  sub-windows, each loading a <i>different HTML file</i>. Mostly replaced today by CSS layout + &lt;iframe&gt;,
+  but the concept ("top frame = logo, left frame = nav links, right frame = content") is a classic syllabus question.</div>
+  <pre><code><span class="cmt">&lt;!-- frameset.html --&gt;</span>
+<span class="tag">&lt;frameset</span> <span class="attr">rows</span>=<span class="str">"20%,80%"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;frame</span> <span class="attr">src</span>=<span class="str">"header.html"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;frameset</span> <span class="attr">cols</span>=<span class="str">"20%,80%"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;frame</span> <span class="attr">src</span>=<span class="str">"nav.html"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;frame</span> <span class="attr">src</span>=<span class="str">"content.html"</span> <span class="attr">name</span>=<span class="str">"main"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;/frameset&gt;</span>
+<span class="tag">&lt;/frameset&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">The browser window splits into 3 fixed panes: a thin strip across the top (20% height) showing header.html, and the remaining 80% split again into a narrow left pane (nav.html) and a wide right pane (content.html) — each pane scrolls independently and loads its own file.</div></div>
+  <p style="font-size:13px;color:var(--muted)">Modern equivalent: <code>&lt;div&gt;</code> + CSS
+  <code>display:flex</code>/<code>grid</code> (used in the Solved Paper Q5a below), since &lt;frameset&gt; is
+  deprecated in HTML5.</p>
+</section>
+
+<section id="u3-intro">
+  <div class="unit-header">
+    <span class="num">UNIT 3</span>
+    <h2>CSS — Cascading Style Sheets</h2>
+    <span class="hrs">8 hrs</span>
+  </div>
+
+  <h3 class="topic">What CSS is and why it's separate from HTML</h3>
+  <p>HTML says <i>what</i> content is (a heading, a paragraph). <b>CSS</b> says <i>how it looks</i> — colour,
+  size, spacing, layout. Keeping them separate means you can completely re-skin a site by changing one CSS file,
+  without touching a single HTML tag.</p>
+
+  <h3 class="topic">The Three Types of CSS</h3>
+  <div class="why"><b>Why three types exist:</b> each solves a different scope problem — style one element only,
+  style one page, or style an entire multi-page site consistently.</div>
+  <table>
+    <tr><th>Type</th><th>Where it lives</th><th>Scope</th><th>Reusability</th></tr>
+    <tr><td><b>Inline CSS</b></td><td><code>style="..."</code> attribute on the tag itself</td><td>That single element only</td><td>None — must repeat on every element</td></tr>
+    <tr><td><b>Internal CSS</b></td><td><code>&lt;style&gt;</code> block inside &lt;head&gt;</td><td>Whole current page</td><td>Not shared across pages</td></tr>
+    <tr><td><b>External CSS</b></td><td>Separate <code>.css</code> file, linked with &lt;link&gt;</td><td>Every page that links it</td><td>Best — one file styles the whole site, cached by browser</td></tr>
+  </table>
+  <pre><code><span class="cmt">&lt;!-- 1. Inline --&gt;</span>
+<span class="tag">&lt;p</span> <span class="attr">style</span>=<span class="str">"color:blue;"</span><span class="tag">&gt;</span>Hello<span class="tag">&lt;/p&gt;</span>
+
+<span class="cmt">&lt;!-- 2. Internal --&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;style&gt;</span>
+    <span class="fn">p</span> { <span class="attr">color</span>: <span class="str">blue</span>; }
+  <span class="tag">&lt;/style&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="cmt">&lt;!-- 3. External --&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="attr">href</span>=<span class="str">"style.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="cmt">/* style.css */</span>
+<span class="fn">p</span> { <span class="attr">color</span>: <span class="str">blue</span>; }</code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><p style="color:blue;margin:4px 0;">Hello</p><p style="color:blue;margin:4px 0;">Hello</p><p style="color:blue;margin:4px 0;">Hello</p></div><div class="note-line">All 3 methods (inline / internal / external) produce the exact same visual result — blue "Hello" text — proving the technique used doesn't change what the browser shows, only how reusable/maintainable the CSS is.</div></div>
+  <div class="note"><b>Priority ("cascade") rule when styles conflict:</b> Inline &gt; Internal/External
+  (whichever comes later in the &lt;head&gt; wins if both target the same element) &gt; Browser default.
+  This ordering is literally called the "Cascade" in "Cascading Style Sheets".</div>
+
+  <h4 class="sub">CSS Syntax</h4>
+  <pre><code><span class="fn">selector</span> {
+  <span class="attr">property</span>: <span class="str">value</span>;
+  <span class="attr">property</span>: <span class="str">value</span>;
+}</code></pre><div class="output"><div class="out-label">Output</div><div class="console">(this is a syntax template, not runnable code — no output on its own)</div></div>
+</section>
+
+<section id="u3-selectors">
+  <h3 class="topic">CSS Selectors</h3>
+  <div class="why"><b>What a selector does:</b> it's the "address" that tells the browser <i>which</i> elements
+  a rule applies to.</div>
+  <table>
+    <tr><th>Selector</th><th>Syntax</th><th>Matches</th></tr>
+    <tr><td>Element/type</td><td><code>p { }</code></td><td>Every &lt;p&gt; on the page</td></tr>
+    <tr><td>Class</td><td><code>.text { }</code></td><td>Every element with <code>class="text"</code> (reusable, many elements)</td></tr>
+    <tr><td>ID</td><td><code>#id1 { }</code></td><td>The one element with <code>id="id1"</code> (unique)</td></tr>
+    <tr><td>Universal</td><td><code>* { }</code></td><td>Every element</td></tr>
+    <tr><td>Descendant</td><td><code>div p { }</code></td><td>&lt;p&gt; elements that are inside a &lt;div&gt;</td></tr>
+    <tr><td>Pseudo-class</td><td><code>a:hover { }</code></td><td>An element in a particular state (mouse hovering)</td></tr>
+  </table>
+
+  <div class="qa">
+    <div class="q">Worked example (2026 paper Q1d) <span class="marks">3 marks</span></div>
+<pre><code><span class="tag">&lt;style&gt;</span>
+  <span class="fn">p</span>{ <span class="attr">color</span>: <span class="str">blue</span>; }
+  <span class="fn">.text</span> { <span class="attr">color</span>: <span class="str">green</span>; }
+  <span class="fn">#id1</span> { <span class="attr">color</span>: <span class="str">red</span>; }
+<span class="tag">&lt;/style&gt;</span>
+...
+<span class="tag">&lt;p</span> <span class="attr">id</span>=<span class="str">"id1"</span> <span class="attr">class</span>=<span class="str">"text"</span><span class="tag">&gt;</span>Sample Text<span class="tag">&lt;/p&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><p style="color:red;margin:0;">Sample Text</p></div><div class="note-line">Even though the element-selector rule (blue) and the class rule (green) both match this &lt;p&gt;, the id rule (red) wins because id selectors have the highest specificity of the three.</div></div>
+    <p><b>Answer:</b> Final colour = <b style="color:var(--accent4)">red</b>.</p>
+    <p><b>Why:</b> ID selectors have higher <i>specificity</i> (a stronger, more specific match) than class
+    selectors, which in turn beat element/type selectors. Specificity ranking, weakest to strongest:
+    <code>element &lt; class &lt; id &lt; inline style</code>. It is <b>not</b> about which rule is written
+    last — <code>#id1</code> wins over <code>.text</code> regardless of order because ID is inherently more
+    specific.</p>
+  </div>
+
+  <h4 class="sub">id selector vs class selector — the direct comparison (exam favourite)</h4>
+  <table>
+    <tr><th></th><th>id selector (#)</th><th>class selector (.)</th></tr>
+    <tr><td>Can be reused?</td><td>No — one id per page</td><td>Yes — many elements, many times</td></tr>
+    <tr><td>Specificity</td><td>Higher</td><td>Lower</td></tr>
+    <tr><td>Typical use case</td><td>Style/target one unique block (a specific header)</td><td>Style a repeated pattern (all buttons, all cards)</td></tr>
+  </table>
+</section>
+
+<section id="u3-box">
+  <h3 class="topic">The CSS Box Model</h3>
+  <div class="why"><b>Why it exists:</b> every single HTML element the browser renders is treated as a
+  rectangular box. The box model defines the 4 layers of that box from the inside out — understanding it is
+  essential for controlling spacing and size precisely.</div>
+  <table>
+    <tr><th>Layer</th><th>What it is</th><th>Effect on total element size</th></tr>
+    <tr><td><b>Content</b></td><td>The actual text/image — controlled by <code>width</code>/<code>height</code></td><td>Base size</td></tr>
+    <tr><td><b>Padding</b></td><td>Transparent space <i>inside</i> the border, between border and content</td><td>Increases the box's visible size; background colour extends into padding</td></tr>
+    <tr><td><b>Border</b></td><td>A visible line wrapping the padding+content</td><td>Adds its own thickness to total size</td></tr>
+    <tr><td><b>Margin</b></td><td>Transparent space <i>outside</i> the border, between this box and neighbouring elements</td><td>Does NOT add to the element's own size — only pushes other elements away; margin is always transparent (no background)</td></tr>
+  </table>
+  <pre><code><span class="fn">.card</span> {
+  <span class="attr">width</span>: <span class="str">200px</span>;
+  <span class="attr">padding</span>: <span class="str">16px</span>;      <span class="cmt">/* inside spacing, pushes content inward */</span>
+  <span class="attr">border</span>: <span class="str">2px solid black</span>;
+  <span class="attr">margin</span>: <span class="str">10px</span>;       <span class="cmt">/* outside spacing, pushes other elements away */</span>
+}</code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><div style="display:inline-block;border:2px solid black;padding:16px;margin:10px;background:#eef;">200px content box<br><span style="font-size:11px;color:#555;">(padding = light-blue area, border = black line, margin = the invisible gap you'd see around this box next to other elements)</span></div></div></div>
+  <div class="note"><b>Key distinction (2026 paper Q4d "differentiate margin and padding"):</b> Padding is
+  <i>inside</i> the border and shares the element's own background colour. Margin is <i>outside</i> the border,
+  is always transparent, and is used to create space <i>between separate elements</i> rather than inside one.</div>
+  <p><b>Individual sides:</b> <code>margin-top</code>, <code>margin-right</code>, <code>margin-bottom</code>,
+  <code>margin-left</code> (same pattern for padding and border). Shorthand
+  <code>margin: 10px 5px 10px 5px;</code> goes clockwise from top: top, right, bottom, left.</p>
+</section>
+
+<section id="u3-layout">
+  <h3 class="topic">Block vs Inline Elements & Page Layout</h3>
+  <div class="why"><b>Why this distinction matters:</b> it determines how an element takes up space and
+  whether it can sit next to other elements — critical for layout debugging.</div>
+  <table>
+    <tr><th></th><th>Block elements</th><th>Inline elements</th></tr>
+    <tr><td>Width</td><td>Take up the full width available, always start on a new line</td><td>Take up only as much width as their content needs</td></tr>
+    <tr><td>width/height CSS</td><td>Respected</td><td>Ignored (mostly)</td></tr>
+    <tr><td>Examples</td><td><code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;table&gt;</code>, <code>&lt;section&gt;</code></td><td><code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;b&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;input&gt;</code></td></tr>
+  </table>
+  <div class="why"><b>Practical rule:</b> use block elements as structural containers/sections; use inline
+  elements for small runs of text or controls that must sit within a line of text (e.g. bolding one word
+  mid-sentence with &lt;strong&gt;).</div>
+
+  <h4 class="sub">CSS for Structural Layout — display:flex (modern webpage layout)</h4>
+  <div class="why"><b>Why flexbox:</b> before flex/grid, developers hacked layouts with floats. Flexbox gives
+  a clean, predictable way to arrange child elements in a row or column, distribute space, and align items.</div>
+  <pre><code><span class="fn">#bottom</span> {
+  <span class="attr">display</span>: <span class="str">flex</span>;          <span class="cmt">/* lays children out side-by-side (row) */</span>
+}
+<span class="fn">#left</span>  { <span class="attr">width</span>: <span class="str">30%</span>; }
+<span class="fn">#right</span> { <span class="attr">width</span>: <span class="str">70%</span>; }</code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><div style="display:flex;border:1px dashed #999;"><div style="width:30%;background:#dde;padding:6px;">left (30%)</div><div style="width:70%;background:#eef;padding:6px;">right (70%)</div></div></div><div class="note-line">#left and #right now sit side-by-side in one row instead of stacking vertically.</div></div>
+
+  <h4 class="sub">Dropdown Navigation Menu (CSS-only)</h4>
+  <div class="why"><b>How a pure-CSS dropdown works:</b> the submenu is hidden by default
+  (<code>display:none</code>) and only shown when the user hovers the parent — no JavaScript required.</div>
+  <pre><code><span class="tag">&lt;ul</span> <span class="attr">class</span>=<span class="str">"menu"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Faculty
+    <span class="tag">&lt;ul</span> <span class="attr">class</span>=<span class="str">"submenu"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;li&gt;</span>Prof. A<span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li&gt;</span>Prof. B<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;/ul&gt;</span>
+  <span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+
+<span class="cmt">/* CSS */</span>
+<span class="fn">.menu</span> { <span class="attr">list-style</span>: <span class="str">none</span>; }
+<span class="fn">.submenu</span> { <span class="attr">display</span>: <span class="str">none</span>; <span class="attr">position</span>: <span class="str">absolute</span>; }
+<span class="fn">.menu li:hover .submenu</span> { <span class="attr">display</span>: <span class="str">block</span>; }  <span class="cmt">/* show on hover */</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><div style="position:relative;display:inline-block;"><div style="background:#eee;padding:6px 12px;cursor:pointer;">Faculty ▾</div><div style="position:relative;background:white;border:1px solid #ccc;padding:6px 12px;font-size:13px;">Prof. A<br>Prof. B</div></div></div><div class="note-line">In the real page the submenu (Prof. A / Prof. B) is hidden until the mouse hovers "Faculty" — shown here open so you can see what it looks like.</div></div>
+</section>
+
+<section id="u4-basics">
+  <div class="unit-header">
+    <span class="num">UNIT 4</span>
+    <h2>JavaScript</h2>
+    <span class="hrs">10 hrs</span>
+  </div>
+
+  <h3 class="topic">What JavaScript is and why it exists</h3>
+  <p>HTML = structure. CSS = appearance. <b>JavaScript (JS)</b> = <b>behaviour/logic</b>. It's a real
+  programming language (variables, conditions, loops, functions) that runs <i>inside the browser</i> and can
+  change the page <i>after</i> it has loaded — react to clicks, validate a form before submission, fetch data,
+  animate things — without reloading the page.</p>
+  <div class="why"><b>Why JS is the most important unit here:</b> HTML/CSS are static once loaded. JS is what
+  makes a page <i>interactive</i> — almost every "real" feature (validation, calculators, dynamic content) needs it.</div>
+
+  <h4 class="sub">Where JavaScript code goes</h4>
+  <pre><code><span class="cmt">&lt;!-- 1. Inside &lt;script&gt; tags in the HTML file --&gt;</span>
+<span class="tag">&lt;script&gt;</span>
+  <span class="kw">alert</span>(<span class="str">"Hello"</span>);
+<span class="tag">&lt;/script&gt;</span>
+
+<span class="cmt">&lt;!-- 2. External file (best practice, cacheable, reusable) --&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"script.js"</span><span class="tag">&gt;&lt;/script&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">Method 1: a popup dialog box appears immediately when the page loads, showing the text "Hello".
+Method 2: nothing visible happens yet by itself — script.js only defines/runs code once the browser fetches and executes that external file.</div></div>
+  <div class="note"><b>Placement tip:</b> put &lt;script&gt; just before &lt;/body&gt; (or use the
+  <code>defer</code> attribute) so the HTML has fully loaded before your JS tries to find/manipulate elements —
+  otherwise <code>document.getElementById()</code> may not find an element that hasn't been parsed yet.</div>
+
+  <h4 class="sub">Output methods — how JS shows information</h4>
+  <table>
+    <tr><th>Method</th><th>What it does</th></tr>
+    <tr><td><code>document.write()</code></td><td>Writes directly into the HTML page (only works before page fully loads — mostly for teaching/demo)</td></tr>
+    <tr><td><code>alert()</code></td><td>Shows a popup dialog box with a message</td></tr>
+    <tr><td><code>console.log()</code></td><td>Prints to the browser's developer console (for debugging, not seen by users)</td></tr>
+    <tr><td><code>innerHTML</code></td><td>Sets/reads the HTML content inside an element — the standard way to update visible page content dynamically</td></tr>
+    <tr><td><code>prompt()</code></td><td>Popup box that <i>asks the user for input</i> and returns what they typed (always as a string!)</td></tr>
+  </table>
+
+  <h3 class="topic">Variables & Data Types</h3>
+  <div class="why"><b>Why variables exist:</b> a variable is a named container that stores a value in memory so
+  you can reuse/change it later instead of retyping literal values everywhere.</div>
+  <table>
+    <tr><th>Keyword</th><th>Meaning</th></tr>
+    <tr><td><code>var</code></td><td>Old-style declaration — function-scoped, can be re-declared (syllabus/older textbooks use this)</td></tr>
+    <tr><td><code>let</code></td><td>Modern declaration — block-scoped, value can change, cannot be re-declared in same scope</td></tr>
+    <tr><td><code>const</code></td><td>Block-scoped, value cannot be reassigned after creation</td></tr>
+  </table>
+  <pre><code><span class="kw">var</span> a = <span class="str">5</span>;        <span class="cmt">// number</span>
+<span class="kw">let</span> name = <span class="str">"Riya"</span>;  <span class="cmt">// string</span>
+<span class="kw">const</span> isPass = <span class="kw">true</span>; <span class="cmt">// boolean</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">(no visible output — these lines just create 3 variables in memory: a=5, name="Riya", isPass=true. Nothing is printed until you explicitly call document.write(), alert(), or console.log() on them.)</div></div>
+
+  <h4 class="sub">JavaScript Data Types</h4>
+  <table>
+    <tr><th>Type</th><th>Example</th><th>Notes</th></tr>
+    <tr><td>Number</td><td><code>10</code>, <code>3.14</code></td><td>No separate int/float type — all numbers are one type</td></tr>
+    <tr><td>String</td><td><code>"hello"</code>, <code>'hi'</code></td><td>Text, in quotes</td></tr>
+    <tr><td>Boolean</td><td><code>true</code>, <code>false</code></td><td>Logical value</td></tr>
+    <tr><td>Array</td><td><code>["apple","banana"]</code></td><td>An ordered, indexed list of values (see below — 2026 paper Q1(f))</td></tr>
+    <tr><td>Object</td><td><code>{name:"A", age:20}</code></td><td>Key–value pairs</td></tr>
+    <tr><td>undefined</td><td>—</td><td>A variable declared but not yet assigned a value</td></tr>
+    <tr><td>null</td><td>—</td><td>Deliberately "no value"</td></tr>
+  </table>
+
+  <h4 class="sub">Arrays in JavaScript (2026 paper Q1f)</h4>
+  <div class="why"><b>What an array is:</b> a single variable that holds an <i>ordered collection</i> of
+  values, each accessible by a numeric <b>index starting at 0</b>.</div>
+  <pre><code><span class="kw">let</span> fruits = [<span class="str">"Apple"</span>, <span class="str">"Banana"</span>, <span class="str">"Mango"</span>, <span class="str">"Orange"</span>, <span class="str">"Grapes"</span>];
+<span class="kw">console</span>.<span class="fn">log</span>(fruits[<span class="str">2</span>]);  <span class="cmt">// "Mango" — index 2 = 3rd item (index starts at 0!)</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">Mango
+
+(printed to the browser's Developer Console — press F12 to see it. Array indexes start at 0, so index 2 is the 3rd element: Apple(0), Banana(1), Mango(2).)</div></div>
+</section>
+
+<section id="u4-operators">
+  <h3 class="topic">Operators</h3>
+  <table>
+    <tr><th>Category</th><th>Operators</th><th>Purpose</th></tr>
+    <tr><td>Arithmetic</td><td><code>+ - * / % **</code></td><td>Maths (<code>%</code> = remainder/modulo, used for odd/even checks)</td></tr>
+    <tr><td>Assignment</td><td><code>= += -= *= /=</code></td><td>Store/update a value</td></tr>
+    <tr><td>Comparison</td><td><code>== != &gt; &lt; &gt;= &lt;=</code></td><td>Compares <i>value only</i>, with type conversion</td></tr>
+    <tr><td>Strict comparison</td><td><code>=== !==</code></td><td>Compares value <b>and</b> type, no conversion</td></tr>
+    <tr><td>Logical</td><td><code>&& || !</code></td><td>Combine boolean conditions (AND / OR / NOT)</td></tr>
+    <tr><td>Ternary</td><td><code>condition ? valueIfTrue : valueIfFalse</code></td><td>Compact one-line if/else</td></tr>
+  </table>
+
+  <div class="qa">
+    <div class="q">Worked example — string concatenation vs numeric addition (2026 paper Q6b) <span class="marks">3+2+2 marks</span></div>
+    <p>The <code>+</code> operator does numeric addition <i>only if both operands are numbers</i>. If either
+    side is a <b>string</b>, <code>+</code> switches to <b>concatenation</b> (joining text) instead.</p>
+    <pre><code><span class="kw">var</span> a = <span class="str">5</span>;
+<span class="kw">var</span> b = <span class="str">2</span>;
+<span class="kw">document</span>.<span class="fn">write</span>(a + b);        <span class="cmt">// → 7        (number + number = arithmetic)</span>
+<span class="kw">document</span>.<span class="fn">write</span>(a + <span class="str">"2"</span>);      <span class="cmt">// → "52"      (number + string = concatenation, NOT 7)</span>
+<span class="kw">document</span>.<span class="fn">write</span>(a - <span class="str">"2"</span>);      <span class="cmt">// → 3        (- has no "text join" meaning, so JS converts "2" to number 2)</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">7
+52
+3</div></div>
+    <p><b>Why the difference:</b> <code>+</code> is overloaded (does two different jobs based on operand
+    types), but <code>-</code>, <code>*</code>, <code>/</code> only mean subtraction/multiplication/division —
+    so JS always tries to convert strings to numbers for those operators.</p>
+  </div>
+
+  <div class="qa">
+    <div class="q">Worked example — == vs === (2026 paper Q6b(ii))</div>
+    <pre><code><span class="kw">var</span> x = <span class="str">10</span>;         <span class="cmt">// number</span>
+<span class="kw">var</span> y = <span class="str">"10"</span>;       <span class="cmt">// string</span>
+<span class="kw">if</span> (x == y) { ... }   <span class="cmt">// TRUE — == converts types before comparing, 10 == "10" → 10 == 10</span>
+<span class="kw">if</span> (x === y) { ... }  <span class="cmt">// FALSE — === also checks type: number !== string</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">First if → TRUE  → "Equal" branch runs
+Second if → FALSE → "Not Equal" branch runs
+
+(== converts "10" to the number 10 before comparing, so it matches. === refuses to convert, so a number can never strictly equal a string.)</div></div>
+    <p><b>Output of the paper's snippet: "Equal"</b> — because it uses <code>==</code>, which performs type
+    coercion, so <code>10 == "10"</code> evaluates to true.</p>
+  </div>
+
+  <div class="qa">
+    <div class="q">Worked example — truthy/falsy empty string (2026 paper Q6b(iii))</div>
+    <pre><code><span class="kw">var</span> x = <span class="str">""</span>;      <span class="cmt">// empty string</span>
+<span class="kw">if</span> (x) { ... } <span class="kw">else</span> { ... }</code></pre><div class="output"><div class="out-label">Output</div><div class="console">the else branch runs
+
+(an empty string "" is one of JavaScript's built-in "falsy" values, so if(x) is treated as if(false))</div></div>
+    <p><b>Output: "False"</b> — an empty string is one of JavaScript's <b>falsy</b> values, so
+    <code>if(x)</code> takes the <code>else</code> branch. <b>The full list of falsy values:</b>
+    <code>false</code>, <code>0</code>, <code>""</code> (empty string), <code>null</code>,
+    <code>undefined</code>, <code>NaN</code>. Everything else is truthy — including <code>"0"</code> (non-empty
+    string!) and empty arrays/objects.</p>
+  </div>
+</section>
+
+<section id="u4-control">
+  <h3 class="topic">Control Flow — Conditions & Loops</h3>
+  <div class="why"><b>Why control flow exists:</b> it lets a program make decisions (if/else) and repeat actions
+  (loops) instead of executing every line exactly once, top to bottom.</div>
+
+  <h4 class="sub">if / else if / else</h4>
+  <pre><code><span class="kw">if</span> (n > <span class="str">0</span>) {
+  <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"Positive"</span>);
+} <span class="kw">else if</span> (n < <span class="str">0</span>) {
+  <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"Negative"</span>);
+} <span class="kw">else</span> {
+  <span class="kw">console</span>.<span class="fn">log</span>(<span class="str">"Zero"</span>);
+}</code></pre><div class="output"><div class="out-label">Output</div><div class="console">Positive   → if n = 5
+Negative   → if n = -3
+Zero       → if n = 0</div></div>
+
+  <h4 class="sub">Ternary operator (2026 paper syllabus item)</h4>
+  <pre><code><span class="kw">let</span> result = (n % <span class="str">2</span> === <span class="str">0</span>) ? <span class="str">"Even"</span> : <span class="str">"Odd"</span>;
+<span class="cmt">// reads as: if (n % 2 === 0) result = "Even"; else result = "Odd";</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">"Even"  → if n = 4
+"Odd"   → if n = 7</div></div>
+
+  <h4 class="sub">Loops</h4>
+  <table>
+    <tr><th>Loop</th><th>Use when</th></tr>
+    <tr><td><code>for</code></td><td>You know how many times to repeat (e.g. loop 1 to 10 for a multiplication table)</td></tr>
+    <tr><td><code>while</code></td><td>Repeat while a condition stays true, count not known in advance</td></tr>
+    <tr><td><code>do...while</code></td><td>Like while, but body runs at least once before checking condition</td></tr>
+  </table>
+  <pre><code><span class="kw">for</span> (<span class="kw">let</span> i = <span class="str">1</span>; i <= <span class="str">10</span>; i++) {
+  <span class="kw">console</span>.<span class="fn">log</span>(n + <span class="str">" x " + i + " = " + (n*i)</span>);
+}</code></pre><div class="output"><div class="out-label">Output</div><div class="console">n x 1 = n
+n x 2 = 2n
+...
+n x 10 = 10n
+
+(10 output lines — one multiplication fact per loop iteration)</div></div>
+  <div class="why"><b>Anatomy of a for-loop:</b> <code>(initialization; condition; increment)</code> —
+  <b>init</b> runs once at the start, <b>condition</b> is checked before every iteration (loop stops when
+  false), <b>increment</b> runs after every iteration.</div>
+</section>
+
+<section id="u4-functions">
+  <h3 class="topic">Functions</h3>
+  <div class="why"><b>Why functions exist:</b> they package a block of reusable logic under one name, so you
+  can call it many times (e.g. from different button clicks) instead of duplicating code, and pass in different
+  inputs (parameters) each time.</div>
+  <pre><code><span class="kw">function</span> <span class="fn">greet</span>(name) {          <span class="cmt">// "name" = parameter (placeholder)</span>
+  <span class="kw">return</span> <span class="str">"Hello, " + name</span>;
+}
+<span class="kw">let</span> msg = <span class="fn">greet</span>(<span class="str">"Riya"</span>);   <span class="cmt">// "Riya" = argument (actual value passed in)</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">msg now holds the string:
+"Hello, Riya"</div></div>
+  <table>
+    <tr><th>Term</th><th>Meaning</th></tr>
+    <tr><td>Function declaration</td><td>Defines the reusable block, doesn't run it yet</td></tr>
+    <tr><td>Function call/invocation</td><td>Actually executes the function's code (<code>greet("Riya")</code>)</td></tr>
+    <tr><td>Parameter</td><td>Variable name listed in the function definition</td></tr>
+    <tr><td>Argument</td><td>The real value supplied when calling the function</td></tr>
+    <tr><td><code>return</code></td><td>Sends a value back out of the function to wherever it was called</td></tr>
+  </table>
+
+  <h4 class="sub">Methods (functions that belong to an object)</h4>
+  <div class="why">A <b>method</b> is just a function stored as a property of an object — e.g.
+  <code>document.write()</code> and <code>Math.round()</code>. The syllabus distinguishes "functions, methods
+  and events" because methods are always <i>called on</i> something (<code>object.method()</code>).</div>
+</section>
+
+<section id="u4-dom">
+  <h3 class="topic">The DOM (Document Object Model)</h3>
+  <div class="why"><b>Why the DOM matters — this is the single most important JS concept for this course:</b>
+  when a browser loads HTML, it builds an in-memory tree of objects representing every tag, called the DOM.
+  JavaScript doesn't edit your HTML file directly — it reads and modifies this <i>live tree</i>, and the
+  browser instantly re-renders the page to match. This is how JS makes pages "dynamic".</div>
+  <pre><code><span class="cmt">// Selecting elements (finding a node in the tree)</span>
+<span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"demo"</span>)          <span class="cmt">// by unique id — most common</span>
+<span class="kw">document</span>.<span class="fn">getElementsByClassName</span>(<span class="str">"box"</span>)   <span class="cmt">// returns a collection (list)</span>
+<span class="kw">document</span>.<span class="fn">getElementsByTagName</span>(<span class="str">"p"</span>)       <span class="cmt">// all &lt;p&gt; tags</span>
+<span class="kw">document</span>.<span class="fn">querySelector</span>(<span class="str">".box"</span>)          <span class="cmt">// CSS-selector style, returns first match</span>
+
+<span class="cmt">// Reading/changing content</span>
+<span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"demo"</span>).<span class="attr">innerHTML</span> = <span class="str">"New text"</span>;
+<span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"demo"</span>).<span class="attr">value</span>;              <span class="cmt">// reads current value of an input field</span>
+
+<span class="cmt">// Changing style directly</span>
+<span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"box"</span>).<span class="attr">style</span>.<span class="attr">backgroundColor</span> = <span class="str">"green"</span>;
+<span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"box"</span>).<span class="attr">style</span>.<span class="attr">color</span> = <span class="str">"white"</span>;</code></pre><div class="output"><div class="out-label">Output</div><div class="console">(these are lookup/assignment statements, not print statements — they find an element, or change its innerHTML/value/style.backgroundColor the instant each line runs. The visible effect: the element with id="demo" changes its text to "New text", and the element with id="box" turns green with white text.)</div></div>
+  <div class="note"><b>innerHTML vs innerText vs value:</b> <code>innerHTML</code> sets/reads content
+  <i>including HTML tags</i> (can inject markup). <code>innerText</code> handles plain text only.
+  <code>value</code> is specifically for form controls (input/select/textarea) — it reads what the user
+  typed/selected, not their innerHTML.</div>
+</section>
+
+<section id="u4-events">
+  <h3 class="topic">Events & Event Handlers</h3>
+  <div class="why"><b>What an event is:</b> something that happens in the browser — a click, a key press, a
+  page load, a mouse moving over an element. An <b>event handler</b> is the JS function that runs
+  <i>in response to</i> that event. This is the mechanism that makes pages interactive — without events, JS
+  code only runs once when the page loads.</div>
+
+  <table class="event-table">
+    <tr><th>Event Handler</th><th>Fires when...</th></tr>
+    <tr><td>onClick</td><td>Element is clicked once</td></tr>
+    <tr><td>onDblClick</td><td>Element is double-clicked</td></tr>
+    <tr><td>onMouseOver</td><td>Mouse pointer enters/moves onto the element</td></tr>
+    <tr><td>onMouseOut</td><td>Mouse pointer leaves the element</td></tr>
+    <tr><td>onFocus</td><td>Element (usually an input) becomes the active/selected element</td></tr>
+    <tr><td>onBlur</td><td>Element loses focus (user clicks/tabs away)</td></tr>
+    <tr><td>onKeyPress / onKeyDown / onKeyUp</td><td>A keyboard key is pressed / pressed-down / released</td></tr>
+    <tr><td>onSelect</td><td>Text inside a text field is selected/highlighted</td></tr>
+    <tr><td>onSubmit</td><td>A form is submitted</td></tr>
+    <tr><td>onChange</td><td>A form control's value changes AND it loses focus (e.g. dropdown selection changes)</td></tr>
+    <tr><td>onLoad</td><td>Page (or image) finishes loading</td></tr>
+  </table>
+
+  <div class="qa">
+    <div class="q">Compare & explain (2026 paper Q3) <span class="marks">9 marks</span></div>
+    <p><b>(i) onclick vs ondblclick</b> — <code>onclick</code> fires after one single click; <code>ondblclick</code>
+    fires only after two rapid clicks. Never use both to react to the "same" click — they can conflict since a
+    double-click also triggers two single-click events first.</p>
+    <p><b>(ii) onmouseover vs onmouseout</b> — <code>onmouseover</code> fires the instant the cursor enters the
+    element's boundary; <code>onmouseout</code> fires the instant it leaves. They're typically used as a pair to
+    create hover effects (e.g. highlight on enter, revert on exit) — exactly like Practical Q5 in your list.</p>
+    <p><b>(iii) onkeydown vs onkeyup</b> — <code>onkeydown</code> fires the moment a key is physically pressed
+    down (fires repeatedly if held); <code>onkeyup</code> fires once, only when the key is released. Use
+    <code>onkeydown</code> for real-time reactions (like a game), <code>onkeyup</code> when you want the
+    <i>final</i> typed value (like live search-as-you-type, checked after the key event completes).</p>
+  </div>
+
+  <h4 class="sub">Two ways to attach an event handler</h4>
+  <pre><code><span class="cmt">&lt;!-- 1. Inline HTML attribute (simple, common in this syllabus) --&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="str">"sayHi()"</span><span class="tag">&gt;</span>Click Me<span class="tag">&lt;/button&gt;</span>
+
+<span class="cmt">// 2. Assigned in JavaScript (cleaner, separates HTML/JS)</span>
+<span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"btn"</span>).<span class="attr">onclick</span> = <span class="fn">sayHi</span>;
+<span class="cmt">// or:</span>
+<span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"btn"</span>).<span class="fn">addEventListener</span>(<span class="str">"click"</span>, sayHi);</code></pre><div class="output"><div class="out-label">Output</div><div class="console">Both methods do the exact same thing: clicking the button labelled "Click Me" calls the sayHi() function. Method 1 wires it via HTML; methods 2/3 wire it via JavaScript instead — no visible difference to the user.</div></div>
+</section>
+
+<section id="u4-validation">
+  <h3 class="topic">Client-Side Form Validation</h3>
+  <div class="why"><b>Why validate on the client (browser) side:</b> catching bad input <i>before</i> it's
+  submitted gives instant feedback to the user (no page reload/server round-trip needed) and reduces junk data
+  reaching the server. This is the single most exam-heavy practical topic (Practical Q4, Q7).</div>
+  <pre><code><span class="kw">function</span> <span class="fn">validateForm</span>() {
+  <span class="kw">let</span> roll = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"roll"</span>).<span class="attr">value</span>;
+  <span class="kw">let</span> name = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"name"</span>).<span class="attr">value</span>;
+  <span class="kw">let</span> dob  = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"dob"</span>).<span class="attr">value</span>;
+
+  <span class="cmt">// a. Roll number must be exactly 7 digits, numeric only</span>
+  <span class="kw">if</span> (!/^\d{<span class="str">7</span>}$/.<span class="fn">test</span>(roll)) {
+    <span class="kw">alert</span>(<span class="str">"Roll number must be a 7-digit number"</span>);
+    <span class="kw">return</span> <span class="kw">false</span>;   <span class="cmt">// stops the form from submitting</span>
+  }
+  <span class="cmt">// b. Name must be alphabetic only</span>
+  <span class="kw">if</span> (!/^[A-Za-z\s]+$/.<span class="fn">test</span>(name)) {
+    <span class="kw">alert</span>(<span class="str">"Name must contain only letters"</span>);
+    <span class="kw">return</span> <span class="kw">false</span>;
+  }
+  <span class="cmt">// c. DOB must not be empty</span>
+  <span class="kw">if</span> (dob === <span class="str">""</span>) {
+    <span class="kw">alert</span>(<span class="str">"Date of birth is required"</span>);
+    <span class="kw">return</span> <span class="kw">false</span>;
+  }
+  <span class="kw">return</span> <span class="kw">true</span>;   <span class="cmt">// all checks passed → allow submission</span>
+}</code></pre><div class="output"><div class="out-label">Output</div><div class="console">Try submitting with roll="12A45", or name="John3", or an empty DOB field →
+each one pops an alert() with the matching error message and blocks the form from submitting (return false).
+Only when ALL three checks pass does the function return true and the form actually submits.</div></div>
+  <div class="why"><b>Why <code>return false</code> matters:</b> when this function is wired to
+  <code>&lt;form onsubmit="return validateForm()"&gt;</code>, returning <code>false</code> tells the browser
+  "cancel the submit", while <code>true</code> lets it proceed. This is the standard validation pattern.</div>
+  <div class="note"><b>Regex quick reference used above:</b> <code>^</code>=start, <code>$</code>=end,
+  <code>\d{7}</code>=exactly 7 digits, <code>[A-Za-z\s]+</code>=one-or-more letters/spaces,
+  <code>!</code> before <code>test()</code> means "does NOT match".</div>
+</section>
+
+<section id="u5-jquery">
+  <div class="unit-header">
+    <span class="num">UNIT 5</span>
+    <h2>jQuery & JSON</h2>
+    <span class="hrs">8 hrs</span>
+  </div>
+
+  <h3 class="topic">What jQuery is and the problem it solves</h3>
+  <p><b>jQuery</b> is a JavaScript <i>library</i> (not a new language) — a big collection of pre-written
+  JavaScript functions that make common DOM tasks (selecting elements, handling events, animating, AJAX) much
+  shorter to write and more consistent across browsers.</p>
+  <div class="why"><b>Why it existed historically:</b> older browsers implemented JS/DOM differently, so plain
+  JS code often needed browser-specific workarounds. jQuery wrapped all of that inconsistency behind one simple,
+  unified API — "write less, do more" is jQuery's own slogan.</div>
+
+  <h4 class="sub">Including jQuery</h4>
+  <pre><code><span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"https://code.jquery.com/jquery-3.7.1.min.js"</span><span class="tag">&gt;&lt;/script&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">(no visible output — this just downloads/loads the jQuery library so `$` becomes available to use in later &lt;script&gt; blocks)</div></div>
+
+  <h4 class="sub">The core jQuery syntax</h4>
+  <pre><code>$(<span class="str">selector</span>).<span class="fn">action</span>();</code></pre><div class="output"><div class="out-label">Output</div><div class="console">(this is the generic pattern, not runnable on its own — e.g. $("p").hide(); would make every &lt;p&gt; disappear)</div></div>
+  <ul>
+    <li><b>$</b> — shorthand for the jQuery function/object itself.</li>
+    <li><b>(selector)</b> — "query" to find HTML element(s), written using familiar CSS syntax.</li>
+    <li><b>.action()</b> — what to do with the selected element(s).</li>
+  </ul>
+
+  <h4 class="sub">The Golden Rule: $(document).ready()</h4>
+  <div class="why"><b>Why this wrapper is mandatory:</b> jQuery code that tries to select/manipulate an element
+  before the browser has finished building the DOM will fail (element doesn't exist yet). Wrapping your code in
+  <code>$(document).ready()</code> guarantees it only runs after the full page has loaded — this is the
+  jQuery equivalent of putting a &lt;script&gt; tag at the bottom of &lt;body&gt;.</div>
+  <pre><code>$(<span class="kw">document</span>).<span class="fn">ready</span>(<span class="kw">function</span>() {
+  <span class="cmt">// all your jQuery code goes here</span>
+});
+<span class="cmt">// shorthand version:</span>
+$(<span class="kw">function</span>() {
+  <span class="cmt">// same effect</span>
+});</code></pre><div class="output"><div class="out-label">Output</div><div class="console">(no visible output by itself — it just delays running the code inside it until the whole page/DOM has finished loading, so any $("#id") selectors inside are guaranteed to find their elements)</div></div>
+</section>
+
+<section id="u5-selectors">
+  <h3 class="topic">jQuery Selectors</h3>
+  <div class="why"><b>Why jQuery selectors matter:</b> they reuse familiar CSS selector syntax so anyone who
+  knows CSS can immediately select elements in jQuery — no separate syntax to learn.</div>
+  <table>
+    <tr><th>Selector</th><th>Example</th><th>Matches</th></tr>
+    <tr><td>Element/tag name</td><td><code>$("p")</code></td><td>All &lt;p&gt; elements</td></tr>
+    <tr><td>ID</td><td><code>$("#demo")</code></td><td>The one element with id="demo"</td></tr>
+    <tr><td>Class</td><td><code>$(".box")</code></td><td>All elements with class="box"</td></tr>
+    <tr><td>Attribute</td><td><code>$("[type='text']")</code></td><td>All elements whose "type" attribute equals "text"</td></tr>
+    <tr><td>All</td><td><code>$("*")</code></td><td>Every element</td></tr>
+    <tr><td>this</td><td><code>$(this)</code></td><td>The specific element that triggered the current event handler</td></tr>
+  </table>
+
+  <div class="qa">
+    <div class="q">Differentiate id and class selectors in jQuery (2026 paper Q3g) <span class="marks">3 marks</span></div>
+    <p><code>$("#id")</code> targets exactly one unique element (fast, direct lookup by browser's internal id
+    index). <code>$(".class")</code> targets every element sharing that class — useful when you want the same
+    action to apply to a whole group at once, e.g. <code>$(".box").hide();</code> hides <i>every</i> box in one line.</p>
+  </div>
+
+  <h4 class="sub">Common jQuery Methods</h4>
+  <table>
+    <tr><th>Method</th><th>Purpose</th></tr>
+    <tr><td><code>.html()</code></td><td>Get or set the HTML content inside selected element(s)</td></tr>
+    <tr><td><code>.text()</code></td><td>Get or set plain text content</td></tr>
+    <tr><td><code>.val()</code></td><td>Get or set the value of a form field</td></tr>
+    <tr><td><code>.css("prop","val")</code></td><td>Get or set a CSS property</td></tr>
+    <tr><td><code>.hide() / .show() / .toggle()</code></td><td>Hide, show, or switch visibility</td></tr>
+    <tr><td><code>.addClass() / .removeClass()</code></td><td>Add/remove a CSS class dynamically</td></tr>
+    <tr><td><code>.attr("name","val")</code></td><td>Get or set an HTML attribute</td></tr>
+  </table>
+  <pre><code>$(<span class="kw">function</span>() {
+  $(<span class="str">"#changeBtn"</span>).<span class="fn">click</span>(<span class="kw">function</span>() {
+    $(<span class="str">"#msg"</span>).<span class="fn">text</span>(<span class="str">"Text changed!"</span>).<span class="fn">css</span>(<span class="str">"color"</span>, <span class="str">"green"</span>);
+  });
+});</code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><button style="padding:4px 10px;">changeBtn</button> &nbsp; <span style="color:green;">Text changed!</span></div><div class="note-line">Before click: button + empty #msg. After clicking the button: #msg shows "Text changed!" in green.</div></div>
+</section>
+
+<section id="u5-events">
+  <h3 class="topic">jQuery Events</h3>
+  <div class="why"><b>Why jQuery event syntax is preferred over inline HTML handlers:</b> it keeps ALL
+  behaviour logic in one JS/jQuery block, separate from HTML markup, and one call can bind the same handler to
+  many elements at once.</div>
+  <pre><code>$(<span class="str">"button"</span>).<span class="fn">click</span>(<span class="kw">function</span>(){ ... });        <span class="cmt">// click</span>
+$(<span class="str">"input"</span>).<span class="fn">focus</span>(<span class="kw">function</span>(){ ... });        <span class="cmt">// gains focus</span>
+$(<span class="str">"input"</span>).<span class="fn">blur</span>(<span class="kw">function</span>(){ ... });         <span class="cmt">// loses focus</span>
+$(<span class="str">"select"</span>).<span class="fn">change</span>(<span class="kw">function</span>(){ ... });       <span class="cmt">// value changed</span>
+$(<span class="str">"a"</span>).<span class="fn">dblclick</span>(<span class="kw">function</span>(){ ... });          <span class="cmt">// double click</span>
+$(<span class="str">"form"</span>).<span class="fn">submit</span>(<span class="kw">function</span>(){ ... });        <span class="cmt">// form submitted</span>
+$(<span class="str">"a"</span>).<span class="fn">mouseover</span>(<span class="kw">function</span>(){ ... });         <span class="cmt">// mouse enters</span>
+$(<span class="str">"a"</span>).<span class="fn">mouseout</span>(<span class="kw">function</span>(){ ... });          <span class="cmt">// mouse leaves</span>
+<span class="cmt">// generic form, works for any event:</span>
+$(<span class="str">"a"</span>).<span class="fn">on</span>(<span class="str">"mouseover"</span>, <span class="kw">function</span>(){ ... });</code></pre><div class="output"><div class="out-label">Output</div><div class="console">(reference list only — each line reacts to a different user action, e.g. clicking a &lt;button&gt;, focusing an &lt;input&gt;, changing a &lt;select&gt;, double-clicking a link, submitting a &lt;form&gt;, or hovering in/out of a link)</div></div>
+
+  <h4 class="sub">Worked example — mouseover/mouseout hyperlink (Practical list item)</h4>
+  <pre><code>$(<span class="kw">function</span>() {
+  $(<span class="str">"#collegeLink"</span>).<span class="fn">mouseover</span>(<span class="kw">function</span>() {
+    $(<span class="str">"body"</span>).<span class="fn">css</span>(<span class="str">"background-color"</span>, <span class="str">"green"</span>);
+    $(<span class="kw">this</span>).<span class="fn">text</span>(<span class="str">"I'm green now"</span>);
+  }).<span class="fn">mouseout</span>(<span class="kw">function</span>() {
+    $(<span class="str">"body"</span>).<span class="fn">css</span>(<span class="str">"background-color"</span>, <span class="str">"red"</span>);
+    $(<span class="kw">this</span>).<span class="fn">text</span>(<span class="str">"I'm red now"</span>);
+  });
+});</code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><a href="#" style="color:#1a73e8;">I'm green now</a></div><div class="note-line">On hover: page background turns green and the link text changes to "I'm green now". On mouse-out: background turns red and text changes to "I'm red now".</div></div>
+  <div class="why"><b>Why <code>$(this)</code> inside the handler:</b> it refers to the exact element the
+  event happened <i>on</i> (here, the specific &lt;a&gt; that was hovered) — essential when the same handler is
+  attached to multiple elements.</div>
+
+  <h4 class="sub">Worked example — weekend checker function</h4>
+  <pre><code><span class="kw">function</span> <span class="fn">isWeekend</span>(dateObj) {
+  <span class="kw">let</span> day = dateObj.<span class="fn">getDay</span>();   <span class="cmt">// 0=Sunday ... 6=Saturday</span>
+  <span class="kw">return</span> (day === <span class="str">0</span> || day === <span class="str">6</span>);
+}
+$(<span class="str">"#checkBtn"</span>).<span class="fn">click</span>(<span class="kw">function</span>() {
+  <span class="kw">let</span> d = <span class="kw">new</span> <span class="fn">Date</span>($(<span class="str">"#dateInput"</span>).<span class="fn">val</span>());
+  $(<span class="str">"#result"</span>).<span class="fn">text</span>(<span class="fn">isWeekend</span>(d) ? <span class="str">"Weekend"</span> : <span class="str">"Weekday"</span>);
+});</code></pre><div class="output"><div class="out-label">Output</div><div class="console">isWeekend(new Date("2026-08-08"))  → true   ("Weekend" is displayed, since Aug 8 2026 is a Saturday)
+isWeekend(new Date("2026-08-10"))  → false  ("Weekday" is displayed, since Aug 10 2026 is a Monday)</div></div>
+
+  <div class="qa">
+    <div class="q">Find & correct the errors (2026 paper Q5b) <span class="marks">7 marks</span></div>
+    <pre><code><span class="cmt">// GIVEN (buggy):</span>
+$(<span class="str">"button"</span>).<span class="fn">onClick</span>(<span class="kw">function</span> {
+  $(<span class="str">"#msg"</span>).<span class="attr">html</span> = <span class="str">"Button Clicked"</span>
+  $(<span class="str">".box"</span>).<span class="fn">css</span>(<span class="str">"color"</span> <span class="str">"blue"</span>);
+  <span class="kw">if</span>($(<span class="str">"#input"</span>).val == <span class="str">""</span>) { alert(<span class="str">"Empty"</span>); }
+});</code></pre><div class="output"><div class="out-label">Output</div><div class="console">This code throws JavaScript errors and never runs correctly:
+• "Uncaught SyntaxError" — the function(){...} passed to onClick is missing its parameter parentheses
+• "TypeError: $(...).onClick is not a function" — jQuery has no .onClick() method
+• assigning to .html / .val (no parentheses) does nothing useful — they are methods, not settable properties</div></div>
+    <pre><code><span class="cmt">// CORRECTED:</span>
+$(<span class="kw">document</span>).<span class="fn">ready</span>(<span class="kw">function</span>() {          <span class="cmt">// (1) missing $(document).ready() wrapper</span>
+  $(<span class="str">"button"</span>).<span class="fn">click</span>(<span class="kw">function</span>() {         <span class="cmt">// (2) it's .click(), not .onClick()  (3) missing () params</span>
+    $(<span class="str">"#msg"</span>).<span class="fn">html</span>(<span class="str">"Button Clicked"</span>);    <span class="cmt">// (4) .html() is a METHOD (needs parentheses), not a property to assign =</span>
+    $(<span class="str">".box"</span>).<span class="fn">css</span>(<span class="str">"color"</span>, <span class="str">"blue"</span>);      <span class="cmt">// (5) missing comma between css() arguments</span>
+    <span class="kw">if</span>($(<span class="str">"#input"</span>).<span class="fn">val</span>() === <span class="str">""</span>) {        <span class="cmt">// (6) .val() needs (), and use === not just =</span>
+      <span class="kw">alert</span>(<span class="str">"Empty"</span>);
+    }
+  });
+});</code></pre><div class="output"><div class="out-label">Output</div><div class="console">Clicking the button now correctly:
+1. Sets #msg's HTML to "Button Clicked"
+2. Turns every .box element's text blue
+3. Pops an "Empty" alert only if #input is blank</div></div>
+    <p><b>List of bugs:</b> (1) whole block not wrapped in <code>$(document).ready()</code>; (2) wrong event
+    method name (<code>onClick</code> isn't a jQuery method — should be <code>.click()</code>); (3) the
+    callback function was missing its <code>()</code>; (4) <code>.html</code> and <code>.val</code> are
+    <b>methods</b>, so they must be <i>called</i> with parentheses, never assigned with <code>=</code>; (5) the
+    two arguments of <code>.css()</code> need a comma between them; (6) comparisons need <code>==</code>/<code>===</code>,
+    a single <code>=</code> would wrongly try to <i>assign</i> a value instead of comparing.</p>
+  </div>
+</section>
+
+<section id="u5-json">
+  <h3 class="topic">JSON — JavaScript Object Notation</h3>
+  <div class="why"><b>Why JSON exists:</b> when a webpage needs to store structured data or send/receive it
+  from a server, plain text isn't enough (no structure) and full JS objects can't easily travel across a
+  network. JSON is a lightweight, text-based, language-independent format for representing structured data —
+  it looks just like a JS object literal, which makes it trivial to use directly in JavaScript.</div>
+
+  <h4 class="sub">JSON syntax rules</h4>
+  <ul>
+    <li>Data is in <b>key : value</b> pairs, keys are always in double quotes.</li>
+    <li>Objects are wrapped in <code>{ }</code>, arrays of objects in <code>[ ]</code>.</li>
+    <li>Values can be: string, number, boolean, array, object, or <code>null</code>.</li>
+    <li>Unlike a JS object, JSON <b>cannot</b> contain functions or comments, and keys must be quoted.</li>
+  </ul>
+  <pre><code><span class="cmt">// A JSON object storing a student's marks in 3 subjects (2026 paper Q1c)</span>
+<span class="kw">let</span> student = {
+  <span class="str">"name"</span>: <span class="str">"Riya Sharma"</span>,
+  <span class="str">"age"</span>: <span class="str">20</span>,
+  <span class="str">"marks"</span>: {
+    <span class="str">"HTML"</span>: <span class="str">85</span>,
+    <span class="str">"CSS"</span>: <span class="str">78</span>,
+    <span class="str">"JavaScript"</span>: <span class="str">90</span>
+  }
+};
+
+<span class="cmt">// accessing values with dot notation</span>
+<span class="kw">console</span>.<span class="fn">log</span>(student.name);          <span class="cmt">// "Riya Sharma"</span>
+<span class="kw">console</span>.<span class="fn">log</span>(student.marks.CSS);    <span class="cmt">// 78</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">Riya Sharma
+78
+
+(both lines print to the Developer Console — dot notation drills into the nested "marks" object to reach the CSS score)</div></div>
+
+  <h4 class="sub">JSON.stringify() and JSON.parse()</h4>
+  <div class="why"><b>Why both exist — the two-way conversion:</b> data travelling over a network or stored in
+  text form must be a plain string, but code wants to work with real JS objects. These two functions convert
+  between the two directions.</div>
+  <table>
+    <tr><th>Function</th><th>Converts</th><th>Used for</th></tr>
+    <tr><td><code>JSON.stringify(obj)</code></td><td>JS object → JSON text string</td><td>Sending data out / saving to storage</td></tr>
+    <tr><td><code>JSON.parse(str)</code></td><td>JSON text string → JS object</td><td>Reading data that arrived as text</td></tr>
+  </table>
+  <pre><code><span class="kw">let</span> jsonText = <span class="kw">JSON</span>.<span class="fn">stringify</span>(student);   <span class="cmt">// object → string, ready to store/send</span>
+<span class="kw">let</span> backToObj  = <span class="kw">JSON</span>.<span class="fn">parse</span>(jsonText);     <span class="cmt">// string → object again, ready to use</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">jsonText  → '{"name":"Riya Sharma","age":20,"marks":{"HTML":85,"CSS":78,"JavaScript":90}}'   (a plain string now)
+backToObj → a real JS object again, so backToObj.name works and returns "Riya Sharma"</div></div>
+
+  <h4 class="sub">Form → JSON → another page (Practical list item)</h4>
+  <div class="why"><b>Why this pattern matters:</b> it's the standard technique for handing collected form
+  data from one page/step to another (or to local storage) — read every field, package it as one JSON object,
+  then read it back wherever it's needed.</div>
+  <pre><code><span class="kw">function</span> <span class="fn">saveFormAsJSON</span>() {
+  <span class="kw">let</span> data = {
+    name: $(<span class="str">"#name"</span>).<span class="fn">val</span>(),
+    email: $(<span class="str">"#email"</span>).<span class="fn">val</span>()
+  };
+  <span class="kw">let</span> jsonString = <span class="kw">JSON</span>.<span class="fn">stringify</span>(data);
+  <span class="kw">localStorage</span>.<span class="fn">setItem</span>(<span class="str">"formData"</span>, jsonString);  <span class="cmt">// persist across pages</span>
+}
+<span class="kw">function</span> <span class="fn">loadFormJSON</span>() {
+  <span class="kw">let</span> saved = <span class="kw">JSON</span>.<span class="fn">parse</span>(<span class="kw">localStorage</span>.<span class="fn">getItem</span>(<span class="str">"formData"</span>));
+  $(<span class="str">"#display"</span>).<span class="fn">text</span>(<span class="str">"Name: " + saved.name</span>);
+}</code></pre><div class="output"><div class="out-label">Output</div><div class="console">saveFormAsJSON(): nothing visible — silently writes {"name":"...","email":"..."} as text into the browser's localStorage.
+loadFormJSON(): the element with id="display" now shows: "Name: [whatever the user typed]"</div></div>
+</section>
+
+<section id="paper">
+  <div class="unit-header">
+    <span class="num">EXAM</span>
+    <h2>Fully Solved Question Paper — 6118 (2026, Sem IV, GE)</h2>
+    <span class="hrs">90 marks / 3 hrs</span>
+  </div>
+  <p class="toc-mini">Section A is compulsory. Attempt any 4 from Section B. All answers below — code is
+  ready to paste, explanations included so you understand <i>why</i>, not just what to write.</p>
+
+  <h3 class="topic">Section A — Q1 (Compulsory)</h3>
+
+  <div class="qa">
+    <div class="q">1(a) HTML message with font size 30px, Arial, yellow <span class="marks">3</span></div>
+<pre><code><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html&gt;</span><span class="tag">&lt;body</span> <span class="attr">style</span>=<span class="str">"background-color:#333;"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;p</span> <span class="attr">style</span>=<span class="str">"font-size:30px; font-family:Arial; color:yellow;"</span><span class="tag">&gt;</span>
+    Welcome to my Webpage
+  <span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/body&gt;&lt;/html&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><div style="background:#333;padding:16px;"><p style="font-size:30px;font-family:Arial;color:yellow;margin:0;">Welcome to my Webpage</p></div></div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">1(b) HTML-CSS nested list: "Web Development" → HTML, CSS <span class="marks">3</span></div>
+<pre><code><span class="tag">&lt;ul&gt;</span>
+  <span class="tag">&lt;li&gt;</span>Web Development
+    <span class="tag">&lt;ul&gt;</span>
+      <span class="tag">&lt;li&gt;</span>HTML<span class="tag">&lt;/li&gt;</span>
+      <span class="tag">&lt;li&gt;</span>CSS<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;/ul&gt;</span>
+  <span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><ul style="margin:0;padding-left:20px;"><li>Web Development<ul style="padding-left:20px;"><li>HTML</li><li>CSS</li></ul></li></ul></div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">1(c) JSON object storing a student's marks in 3 subjects <span class="marks">3</span></div>
+<pre><code><span class="kw">let</span> student = {
+  <span class="str">"name"</span>: <span class="str">"Riya Sharma"</span>,
+  <span class="str">"age"</span>: <span class="str">20</span>,
+  <span class="str">"marks"</span>: { <span class="str">"HTML"</span>: <span class="str">85</span>, <span class="str">"CSS"</span>: <span class="str">78</span>, <span class="str">"JavaScript"</span>: <span class="str">90</span> }
+};</code></pre><div class="output"><div class="out-label">Output</div><div class="console">A JSON object is created in memory:
+{ name: "Riya Sharma", age: 20, marks: {HTML:85, CSS:78, JavaScript:90} }</div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">1(d) Given HTML+CSS: final colour of paragraph, selector reason, id vs class <span class="marks">3</span></div>
+    <p><b>(i)</b> Final colour = <b style="color:var(--accent4)">red</b>.</p>
+    <p><b>(ii)</b> Selector responsible: <code>#id1</code> (the ID selector).</p>
+    <p><b>(iii)</b> Why this selector wins over the others: ID selectors have higher <b>specificity</b> than
+    class selectors, which in turn have higher specificity than plain element (type) selectors. Specificity
+    order (low→high): element &lt; class &lt; id &lt; inline style — regardless of the order the rules are
+    written in the stylesheet, the higher-specificity rule always wins.</p>
+  </div>
+
+  <div class="qa">
+    <div class="q">1(e) Differentiate HTML tags and HTML attributes, with two examples of each <span class="marks">3</span></div>
+    <p>A <b>tag</b> defines an element — the type of content (structure/meaning), e.g. <code>&lt;p&gt;</code>,
+    <code>&lt;img&gt;</code>. An <b>attribute</b> lives <i>inside</i> the opening tag and provides extra
+    information/configuration about that specific element, written as <code>name="value"</code>, e.g.
+    <code>src</code> and <code>alt</code> in <code>&lt;img src="a.png" alt="pic"&gt;</code>, or <code>href</code>
+    and <code>target</code> in <code>&lt;a href="#" target="_blank"&gt;</code>. A tag can exist without any
+    attributes; an attribute cannot exist without a tag to attach to.</p>
+  </div>
+
+  <div class="qa">
+    <div class="q">1(f) What is an array in JavaScript? Declare array of 5 fruits, print the 3rd <span class="marks">3</span></div>
+    <p>An array is a single variable holding an <b>ordered, indexed</b> collection of values (index starts
+    at 0), letting you store and access many related values under one name.</p>
+<pre><code><span class="kw">let</span> fruits = [<span class="str">"Apple"</span>, <span class="str">"Banana"</span>, <span class="str">"Mango"</span>, <span class="str">"Orange"</span>, <span class="str">"Grapes"</span>];
+<span class="kw">document</span>.<span class="fn">write</span>(fruits[<span class="str">2</span>]);   <span class="cmt">// "Mango" — 3rd fruit is at index 2</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">Mango</div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">1(g) Difference between id and class selectors in jQuery <span class="marks">3</span></div>
+    <p><code>$("#id")</code> selects the single unique element with that id. <code>$(".class")</code> selects
+    every element sharing that class, so one call can act on many elements at once — e.g.
+    <code>$(".highlight").css("color","red")</code> recolours every highlighted element in one line.</p>
+  </div>
+
+  <div class="qa">
+    <div class="q">1(h)(i) Heading + paragraph webpage <span class="marks">3</span></div>
+<pre><code><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html&gt;&lt;body&gt;</span>
+  <span class="tag">&lt;h1&gt;</span>Welcome to My Website<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;p&gt;</span>This paragraph describes the purpose of the page.<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/body&gt;&lt;/html&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><h1 style="margin:0 0 6px;">Welcome to My Website</h1><p style="margin:0;color:#555;">This paragraph describes the purpose of the page.</p></div></div>
+    <div class="q" style="margin-top:14px">1(h)(ii) Hyperlink that opens in a new tab</div>
+<pre><code><span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"https://www.du.ac.in"</span> <span class="attr">target</span>=<span class="str">"_blank"</span><span class="tag">&gt;</span>Visit DU<span class="tag">&lt;/a&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><a href="#" style="color:#1a73e8;">Visit DU</a></div><div class="note-line">Opens du.ac.in in a new browser tab.</div></div>
+    <div class="q" style="margin-top:14px">1(h)(iii) Insert a horizontal rule</div>
+<pre><code><span class="tag">&lt;hr&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><hr style="border:none;border-top:1px solid #999;"></div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">1(i) JS program: change background colour when a button is clicked <span class="marks">3</span></div>
+<pre><code><span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="str">"changeColor()"</span><span class="tag">&gt;</span>Change Background<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;script&gt;</span>
+<span class="kw">function</span> <span class="fn">changeColor</span>() {
+  <span class="kw">document</span>.<span class="attr">body</span>.<span class="attr">style</span>.<span class="attr">backgroundColor</span> = <span class="str">"lightblue"</span>;
+}
+<span class="tag">&lt;/script&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><button style="padding:6px 12px;">Change Background</button></div><div class="note-line">Clicking it instantly turns the page's background colour to light blue.</div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">1(j) Purpose of &lt;a&gt;, &lt;img&gt;, &lt;br&gt; <span class="marks">3</span></div>
+    <p><code>&lt;a&gt;</code> — creates a hyperlink to another page/resource/section.
+    <code>&lt;img&gt;</code> — embeds an image into the page. <code>&lt;br&gt;</code> — inserts a single
+    line break within text, without starting a new paragraph.</p>
+  </div>
+
+  <hr class="div">
+  <h3 class="topic">Section B — Attempt any 4</h3>
+
+  <div class="qa">
+    <div class="q">Q2(a) Number classifier + multiplication table (positive/negative/zero, odd/even, sum 1..N) <span class="marks">8</span></div>
+<pre><code><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html&gt;&lt;body&gt;</span>
+<span class="tag">&lt;script&gt;</span>
+<span class="kw">let</span> N = <span class="kw">parseInt</span>(<span class="kw">prompt</span>(<span class="str">"Enter a number:"</span>));
+
+<span class="kw">if</span> (N > <span class="str">0</span>) {
+  <span class="kw">document</span>.<span class="fn">write</span>(<span class="str">"The number is Positive&lt;br&gt;"</span>);
+} <span class="kw">else if</span> (N < <span class="str">0</span>) {
+  <span class="kw">document</span>.<span class="fn">write</span>(<span class="str">"The number is Negative&lt;br&gt;"</span>);
+} <span class="kw">else</span> {
+  <span class="kw">document</span>.<span class="fn">write</span>(<span class="str">"The number is Zero&lt;br&gt;"</span>);
+}
+
+<span class="kw">if</span> (N > <span class="str">0</span> && N % <span class="str">2</span> === <span class="str">0</span>) {
+  <span class="cmt">// positive AND even → print multiplication table up to 10</span>
+  <span class="kw">document</span>.<span class="fn">write</span>(<span class="str">"Multiplication table of " + N + ":&lt;br&gt;"</span>);
+  <span class="kw">for</span> (<span class="kw">let</span> i = <span class="str">1</span>; i <= <span class="str">10</span>; i++) {
+    <span class="kw">document</span>.<span class="fn">write</span>(N + <span class="str">" x " + i + " = " + (N * i) + "&lt;br&gt;"</span>);
+  }
+
+  <span class="cmt">// sum of first N natural numbers</span>
+  <span class="kw">let</span> sum = <span class="str">0</span>;
+  <span class="kw">for</span> (<span class="kw">let</span> i = <span class="str">1</span>; i <= N; i++) { sum += i; }
+  <span class="kw">document</span>.<span class="fn">write</span>(<span class="str">"Sum of first " + N + " natural numbers = " + sum + "&lt;br&gt;"</span>);
+
+} <span class="kw">else if</span> (N < <span class="str">0</span>) {
+  <span class="kw">alert</span>(<span class="str">"Negative number entered"</span>);
+}
+<span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;&lt;/html&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">Example run — user enters 6:
+
+The number is Positive
+Multiplication table of 6:
+6 x 1 = 6
+6 x 2 = 12
+...
+6 x 10 = 60
+Sum of first 6 natural numbers = 21
+
+(If the user instead enters -4: "The number is Negative" is written to the page, then a separate alert box pops up saying "Negative number entered".)</div></div>
+    <p style="font-size:13px;color:var(--muted)">Logic: the paper says "if positive and even, calculate and
+    display sum of first N naturals" AND "print table up to 10" — both are done inside the same positive+even
+    branch; the alert only fires for negative input.</p>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q2(b) CSS Box Model — components, and how padding/border/margin affect layout <span class="marks">8</span></div>
+    <p>The box model has four nested layers around every element: <b>content</b> (text/image, sized by
+    width/height) → <b>padding</b> (inner cushion between content and border, shares the element's background) →
+    <b>border</b> (visible edge, adds its own width to the box) → <b>margin</b> (outer transparent gap that
+    separates this box from its neighbours, does not affect the box's own rendered size).</p>
+    <p><b>Effect on layout:</b> increasing <i>padding</i> makes the visible box bigger without changing the
+    <code>width</code> value itself (unless <code>box-sizing:border-box</code> is set). Increasing
+    <i>border</i> width also visually enlarges the box. Increasing <i>margin</i> never changes the box's own
+    size — it only pushes surrounding elements further away, which is why margins are used for spacing
+    <i>between</i> elements while padding is used for spacing <i>inside</i> one element.</p>
+<pre><code><span class="fn">.card</span> {
+  <span class="attr">width</span>: <span class="str">200px</span>;
+  <span class="attr">padding</span>: <span class="str">20px</span>;              <span class="cmt">/* space inside the border */</span>
+  <span class="attr">border</span>: <span class="str">3px solid #333</span>;
+  <span class="attr">margin</span>: <span class="str">15px</span>;               <span class="cmt">/* space outside the border */</span>
+  <span class="attr">background-color</span>: <span class="str">lightyellow</span>; <span class="cmt">/* fills content + padding, NOT margin */</span>
+}</code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><div style="display:inline-block;width:200px;padding:20px;border:3px solid #333;margin:15px;background:lightyellow;box-sizing:border-box;">Card content</div></div><div class="note-line">The light-yellow background fills the padding too (it's part of the box) but stops at the border — the 15px margin around it stays fully transparent.</div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q3 — onclick vs ondblclick, onmouseover vs onmouseout, onkeydown vs onkeyup <span class="marks">9</span></div>
+    <p>Fully explained above in the <a href="#u4-events">Events & Event Handlers</a> section — reuse that
+    3-part comparison directly.</p>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q3(b) rowspan/colspan explained + timetable webpage with CSS colours <span class="marks">6</span></div>
+    <p>Explanation reused from the Tables section: <code>rowspan</code> merges a cell vertically across
+    multiple rows, <code>colspan</code> merges horizontally across multiple columns; whichever row loses cells
+    to a span must have that many fewer &lt;td&gt;s to keep columns aligned.</p>
+<pre><code><span class="tag">&lt;style&gt;</span>
+  <span class="fn">table</span> { <span class="attr">border-collapse</span>: <span class="str">collapse</span>; <span class="attr">background-color</span>: <span class="str">#eef</span>; }
+  <span class="fn">th, td</span> { <span class="attr">border</span>: <span class="str">1px solid #333</span>; <span class="attr">padding</span>: <span class="str">8px</span>; <span class="attr">color</span>: <span class="str">navy</span>; }
+  <span class="fn">th</span> { <span class="attr">background-color</span>: <span class="str">gold</span>; }
+<span class="tag">&lt;/style&gt;</span>
+<span class="tag">&lt;table&gt;</span>
+  <span class="tag">&lt;tr&gt;&lt;th&gt;</span>Day<span class="tag">&lt;/th&gt;&lt;th&gt;</span>Period 1<span class="tag">&lt;/th&gt;&lt;th&gt;</span>Period 2<span class="tag">&lt;/th&gt;&lt;th&gt;</span>Period 3<span class="tag">&lt;/th&gt;&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;td</span> <span class="attr">rowspan</span>=<span class="str">"2"</span><span class="tag">&gt;</span>Monday<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Math<span class="tag">&lt;/td&gt;&lt;td&gt;</span>English<span class="tag">&lt;/td&gt;&lt;td&gt;</span>Science<span class="tag">&lt;/td&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;td</span> <span class="attr">colspan</span>=<span class="str">"2"</span><span class="tag">&gt;</span>History and Art<span class="tag">&lt;/td&gt;&lt;td&gt;</span>Music<span class="tag">&lt;/td&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+<span class="tag">&lt;/table&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><table style="border-collapse:collapse;background:#eef;"><tr><th style="border:1px solid #333;padding:8px;background:gold;color:#111;">Day</th><th style="border:1px solid #333;padding:8px;background:gold;color:#111;">Period 1</th><th style="border:1px solid #333;padding:8px;background:gold;color:#111;">Period 2</th><th style="border:1px solid #333;padding:8px;background:gold;color:#111;">Period 3</th></tr><tr><td rowspan="2" style="border:1px solid #333;padding:8px;color:navy;">Monday</td><td style="border:1px solid #333;padding:8px;color:navy;">Math</td><td style="border:1px solid #333;padding:8px;color:navy;">English</td><td style="border:1px solid #333;padding:8px;color:navy;">Science</td></tr><tr><td colspan="2" style="border:1px solid #333;padding:8px;color:navy;">History and Art</td><td style="border:1px solid #333;padding:8px;color:navy;">Music</td></tr></table></div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q4 — Differentiate: block vs inline, b vs strong, browser vs server, margin vs padding <span class="marks">8</span></div>
+    <p><b>Block vs inline:</b> block elements always start on a new line and take full available width
+    (&lt;div&gt;, &lt;p&gt;); inline elements flow within a line and only take the width of their content
+    (&lt;span&gt;, &lt;a&gt;).</p>
+    <p><b>&lt;b&gt; vs &lt;strong&gt;:</b> identical bold appearance by default, but &lt;strong&gt; carries
+    semantic "importance" meaning (read differently by screen readers, better for SEO); &lt;b&gt; is purely visual.</p>
+    <p><b>Web browser vs web server:</b> the browser is client software that requests and renders pages
+    (Chrome, Firefox); the server is the machine/software that stores site files and responds to those
+    requests (Apache, Nginx).</p>
+    <p><b>Margin vs padding:</b> margin is transparent space <i>outside</i> an element's border (separates it
+    from neighbours); padding is space <i>inside</i> the border (separates content from the border, shares
+    the element's own background).</p>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q4(b) Employee form → JS dynamically builds an HTML table on button click <span class="marks">7</span></div>
+<pre><code><span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="str">"empId"</span> <span class="attr">placeholder</span>=<span class="str">"ID"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="str">"empName"</span> <span class="attr">placeholder</span>=<span class="str">"Name"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="str">"empDept"</span> <span class="attr">placeholder</span>=<span class="str">"Department"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="str">"addRow()"</span><span class="tag">&gt;</span>Add<span class="tag">&lt;/button&gt;</span>
+
+<span class="tag">&lt;table</span> <span class="attr">id</span>=<span class="str">"empTable"</span> <span class="attr">border</span>=<span class="str">"1"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;tr&gt;&lt;th&gt;</span>ID<span class="tag">&lt;/th&gt;&lt;th&gt;</span>Name<span class="tag">&lt;/th&gt;&lt;th&gt;</span>Department<span class="tag">&lt;/th&gt;&lt;/tr&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+
+<span class="tag">&lt;script&gt;</span>
+<span class="kw">function</span> <span class="fn">addRow</span>() {
+  <span class="kw">let</span> id = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"empId"</span>).<span class="attr">value</span>;
+  <span class="kw">let</span> name = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"empName"</span>).<span class="attr">value</span>;
+  <span class="kw">let</span> dept = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"empDept"</span>).<span class="attr">value</span>;
+
+  <span class="kw">let</span> table = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"empTable"</span>);
+  <span class="kw">let</span> row = table.<span class="fn">insertRow</span>();
+  row.<span class="fn">insertCell</span>(<span class="str">0</span>).<span class="attr">innerHTML</span> = id;
+  row.<span class="fn">insertCell</span>(<span class="str">1</span>).<span class="attr">innerHTML</span> = name;
+  row.<span class="fn">insertCell</span>(<span class="str">2</span>).<span class="attr">innerHTML</span> = dept;
+}
+<span class="tag">&lt;/script&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">After typing "101", "Aditi", "Computer Science" and clicking Add:
+a new table row appears → | 101 | Aditi | Computer Science |
+(the table grows by one row every time Add is clicked, inputs are NOT auto-cleared in this version)</div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q5(a) &lt;div&gt; layout: top = "My Webpage", bottom split into left "Table of contents" / right "Main Content" <span class="marks">8</span></div>
+<pre><code><span class="tag">&lt;style&gt;</span>
+  <span class="fn">#top</span> { <span class="attr">background</span>: <span class="str">#333</span>; <span class="attr">color</span>: <span class="str">white</span>; <span class="attr">padding</span>: <span class="str">15px</span>; <span class="attr">text-align</span>: <span class="str">center</span>; }
+  <span class="fn">#bottom</span> { <span class="attr">display</span>: <span class="str">flex</span>; <span class="attr">height</span>: <span class="str">300px</span>; }   <span class="cmt">/* flex → left & right sit side-by-side */</span>
+  <span class="fn">#left</span>  { <span class="attr">width</span>: <span class="str">30%</span>; <span class="attr">background</span>: <span class="str">#eee</span>; <span class="attr">padding</span>: <span class="str">10px</span>; }
+  <span class="fn">#right</span> { <span class="attr">width</span>: <span class="str">70%</span>; <span class="attr">background</span>: <span class="str">#fafafa</span>; <span class="attr">padding</span>: <span class="str">10px</span>; }
+<span class="tag">&lt;/style&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"top"</span><span class="tag">&gt;&lt;h1&gt;</span>My Webpage<span class="tag">&lt;/h1&gt;&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"bottom"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"left"</span><span class="tag">&gt;</span>Table of contents<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"right"</span><span class="tag">&gt;</span>Main Content<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><div style="background:#333;color:white;padding:8px;text-align:center;">My Webpage</div><div style="display:flex;height:70px;"><div style="width:30%;background:#eee;padding:6px;font-size:13px;">Table of contents</div><div style="width:70%;background:#fafafa;padding:6px;font-size:13px;">Main Content</div></div></div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q5(b) What is jQuery + fix the buggy code <span class="marks">7</span></div>
+    <p>See full explanation and corrected code above in the <a href="#u5-events">jQuery Events</a> section
+    ("Find & correct the errors").</p>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q6(a) Complete HTML+JS calculator (add/sub/mul/div, Clear button) <span class="marks">9</span></div>
+<pre><code><span class="tag">&lt;label&gt;</span>Number 1: <span class="tag">&lt;/label&gt;&lt;input</span> <span class="attr">type</span>=<span class="str">"number"</span> <span class="attr">id</span>=<span class="str">"num1"</span><span class="tag">&gt;&lt;br&gt;</span>
+<span class="tag">&lt;label&gt;</span>Number 2: <span class="tag">&lt;/label&gt;&lt;input</span> <span class="attr">type</span>=<span class="str">"number"</span> <span class="attr">id</span>=<span class="str">"num2"</span><span class="tag">&gt;&lt;br&gt;</span>
+<span class="tag">&lt;label&gt;</span>Operation: <span class="tag">&lt;/label&gt;</span>
+<span class="tag">&lt;select</span> <span class="attr">id</span>=<span class="str">"op"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="str">"+"</span><span class="tag">&gt;</span>Addition (+)<span class="tag">&lt;/option&gt;</span>
+  <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="str">"-"</span><span class="tag">&gt;</span>Subtraction (-)<span class="tag">&lt;/option&gt;</span>
+  <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="str">"*"</span><span class="tag">&gt;</span>Multiplication (*)<span class="tag">&lt;/option&gt;</span>
+  <span class="tag">&lt;option</span> <span class="attr">value</span>=<span class="str">"/"</span><span class="tag">&gt;</span>Division (/)<span class="tag">&lt;/option&gt;</span>
+<span class="tag">&lt;/select&gt;&lt;br&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="str">"calculate()"</span><span class="tag">&gt;</span>Calculate<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="str">"clearAll()"</span><span class="tag">&gt;</span>Clear<span class="tag">&lt;/button&gt;&lt;br&gt;</span>
+<span class="tag">&lt;label&gt;</span>Result: <span class="tag">&lt;/label&gt;&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span> <span class="attr">id</span>=<span class="str">"result"</span> <span class="attr">readonly</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;script&gt;</span>
+<span class="kw">function</span> <span class="fn">calculate</span>() {
+  <span class="kw">let</span> a = <span class="kw">parseFloat</span>(<span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"num1"</span>).<span class="attr">value</span>);
+  <span class="kw">let</span> b = <span class="kw">parseFloat</span>(<span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"num2"</span>).<span class="attr">value</span>);
+  <span class="kw">let</span> op = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"op"</span>).<span class="attr">value</span>;
+  <span class="kw">let</span> res;
+  <span class="kw">if</span> (op === <span class="str">"+"</span>) res = a + b;
+  <span class="kw">else if</span> (op === <span class="str">"-"</span>) res = a - b;
+  <span class="kw">else if</span> (op === <span class="str">"*"</span>) res = a * b;
+  <span class="kw">else if</span> (op === <span class="str">"/"</span>) res = (b === <span class="str">0</span>) ? <span class="str">"Error: div by 0"</span> : a / b;
+  <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"result"</span>).<span class="attr">value</span> = res;
+}
+<span class="kw">function</span> <span class="fn">clearAll</span>() {
+  <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"num1"</span>).<span class="attr">value</span> = <span class="str">""</span>;
+  <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"num2"</span>).<span class="attr">value</span> = <span class="str">""</span>;
+  <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"result"</span>).<span class="attr">value</span> = <span class="str">""</span>;
+}
+<span class="tag">&lt;/script&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">Example: Number1=8, Number2=2, Operation=Division (/), click Calculate →
+Result box shows: 4
+
+If Number2=0 and Division is chosen → Result box shows: "Error: div by 0" (caught before an actual crash)
+Clicking Clear empties all three fields back to blank.</div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q6(b) Output & justification of 3 JS code snippets <span class="marks">7</span></div>
+    <p><b>(i)</b> Outputs: <code>7</code>, then <code>52</code>, then <code>3</code>. Justification: fully
+    explained above in <a href="#u4-operators">Operators — string concatenation vs numeric addition</a>.</p>
+    <p><b>(ii)</b> Output: <code>"Equal"</code>. Justification: <code>==</code> performs type coercion, so
+    <code>10 == "10"</code> is true even though one is a number and the other a string.</p>
+    <p><b>(iii)</b> Output: <code>"False"</code>. Justification: an empty string <code>""</code> is a falsy
+    value in JavaScript, so the if-condition fails and the else branch runs.</p>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q7(a) Three types of CSS — explain, illustrate, compare (scope/reusability/suitability) <span class="marks">8</span></div>
+    <p>Fully explained in <a href="#u3-intro">CSS Basics & Types</a> above — Inline (single element, no reuse),
+    Internal (whole current page, not shared), External (whole site, best reusability & suitability for
+    real projects since one file styles unlimited pages).</p>
+<pre><code><span class="tag">&lt;p</span> <span class="attr">style</span>=<span class="str">"color:blue;"</span><span class="tag">&gt;</span>Inline example<span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;style&gt;</span> <span class="fn">.internal</span>{<span class="attr">color</span>:<span class="str">green</span>;} <span class="tag">&lt;/style&gt;</span>
+<span class="tag">&lt;p</span> <span class="attr">class</span>=<span class="str">"internal"</span><span class="tag">&gt;</span>Internal example<span class="tag">&lt;/p&gt;</span>
+
+<span class="cmt">&lt;!-- style.css (external file) --&gt;</span>
+<span class="fn">.external</span> { <span class="attr">color</span>: <span class="str">red</span>; }
+<span class="cmt">&lt;!-- in html: &lt;link rel="stylesheet" href="style.css"&gt; --&gt;</span>
+<span class="tag">&lt;p</span> <span class="attr">class</span>=<span class="str">"external"</span><span class="tag">&gt;</span>External example<span class="tag">&lt;/p&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="preview"><p style="color:blue;margin:3px 0;">Inline example</p><p style="color:green;margin:3px 0;">Internal example</p><p style="color:red;margin:3px 0;">External example</p></div></div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Q7(b) User registration form (Name, Email, Password, Mobile) with full JS validation <span class="marks">7</span></div>
+    <p>This is essentially <b>Mini Project 1</b> below — full working code with all four validation rules
+    (name not empty, email format, password ≥6 chars, mobile exactly 10 digits) is provided there so you can
+    study and reuse it directly.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="unit-header">
+    <span class="num">PRACTICE</span>
+    <h2>4 Mini Projects — exactly the shape of 7–9 mark questions</h2>
+  </div>
+  <p>Each project below is a complete, self-contained &lt;form&gt;+CSS+JS/jQuery block covering multiple
+  syllabus topics at once — exactly how Section B "design a webpage that..." questions are framed. Study the
+  code, then try rewriting each from memory.</p>
+
+  <div class="project">
+    <h4>1. Student / User Registration Form with Full Validation</h4>
+    <div class="tags"><span>HTML forms</span><span>CSS</span><span>JS validation</span><span>regex</span></div>
+    <p>Covers: text/email/password/tel inputs, labels, CSS styling of a form, and a validate() function with
+    one rule per field — this is Q7(b) of the 2026 paper and Practical Q4/Q7.</p>
+<pre><code><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html&gt;&lt;head&gt;</span>
+<span class="tag">&lt;style&gt;</span>
+  <span class="fn">body</span> { <span class="attr">font-family</span>: <span class="str">Arial</span>; <span class="attr">background</span>: <span class="str">#f2f2f2</span>; }
+  <span class="fn">.form-box</span> { <span class="attr">width</span>: <span class="str">320px</span>; <span class="attr">margin</span>: <span class="str">40px auto</span>; <span class="attr">background</span>: <span class="str">white</span>;
+                <span class="attr">padding</span>: <span class="str">20px</span>; <span class="attr">border-radius</span>: <span class="str">8px</span>; <span class="attr">box-shadow</span>: <span class="str">0 2px 6px #ccc</span>; }
+  <span class="fn">.form-box input</span> { <span class="attr">width</span>: <span class="str">100%</span>; <span class="attr">padding</span>: <span class="str">8px</span>; <span class="attr">margin</span>: <span class="str">6px 0 2px</span>;
+                       <span class="attr">border</span>: <span class="str">1px solid #ccc</span>; <span class="attr">border-radius</span>: <span class="str">4px</span>; }
+  <span class="fn">.error</span> { <span class="attr">color</span>: <span class="str">red</span>; <span class="attr">font-size</span>: <span class="str">12px</span>; <span class="attr">min-height</span>: <span class="str">14px</span>; }
+  <span class="fn">button</span> { <span class="attr">width</span>: <span class="str">100%</span>; <span class="attr">padding</span>: <span class="str">10px</span>; <span class="attr">background</span>: <span class="str">#2e7d32</span>; <span class="attr">color</span>: <span class="str">white</span>;
+             <span class="attr">border</span>: <span class="str">none</span>; <span class="attr">border-radius</span>: <span class="str">4px</span>; <span class="attr">margin-top</span>: <span class="str">10px</span>; }
+<span class="tag">&lt;/style&gt;</span>
+<span class="tag">&lt;/head&gt;&lt;body&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"form-box"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;h2&gt;</span>Register<span class="tag">&lt;/h2&gt;</span>
+  <span class="tag">&lt;form</span> <span class="attr">onsubmit</span>=<span class="str">"return validateForm()"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;label&gt;</span>Name<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span> <span class="attr">id</span>=<span class="str">"name"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"error"</span> <span class="attr">id</span>=<span class="str">"nameErr"</span><span class="tag">&gt;&lt;/div&gt;</span>
+
+    <span class="tag">&lt;label&gt;</span>Email<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span> <span class="attr">id</span>=<span class="str">"email"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"error"</span> <span class="attr">id</span>=<span class="str">"emailErr"</span><span class="tag">&gt;&lt;/div&gt;</span>
+
+    <span class="tag">&lt;label&gt;</span>Password<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"password"</span> <span class="attr">id</span>=<span class="str">"pass"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"error"</span> <span class="attr">id</span>=<span class="str">"passErr"</span><span class="tag">&gt;&lt;/div&gt;</span>
+
+    <span class="tag">&lt;label&gt;</span>Mobile Number<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span> <span class="attr">id</span>=<span class="str">"mobile"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="str">"error"</span> <span class="attr">id</span>=<span class="str">"mobileErr"</span><span class="tag">&gt;&lt;/div&gt;</span>
+
+    <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="str">"submit"</span><span class="tag">&gt;</span>Register<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/form&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;script&gt;</span>
+<span class="kw">function</span> <span class="fn">validateForm</span>() {
+  <span class="kw">let</span> ok = <span class="kw">true</span>;
+  <span class="kw">let</span> name = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"name"</span>).<span class="attr">value</span>.<span class="fn">trim</span>();
+  <span class="kw">let</span> email = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"email"</span>).<span class="attr">value</span>.<span class="fn">trim</span>();
+  <span class="kw">let</span> pass  = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"pass"</span>).<span class="attr">value</span>;
+  <span class="kw">let</span> mobile = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"mobile"</span>).<span class="attr">value</span>.<span class="fn">trim</span>();
+
+  <span class="cmt">// reset all error messages first</span>
+  [<span class="str">"nameErr"</span>,<span class="str">"emailErr"</span>,<span class="str">"passErr"</span>,<span class="str">"mobileErr"</span>].<span class="fn">forEach</span>(<span class="fn">id</span> =&gt;
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(id).<span class="attr">innerText</span> = <span class="str">""</span>);
+
+  <span class="kw">if</span> (name === <span class="str">""</span>) {
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"nameErr"</span>).<span class="attr">innerText</span> = <span class="str">"Name cannot be empty"</span>; ok = <span class="kw">false</span>;
+  }
+  <span class="kw">if</span> (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.<span class="fn">test</span>(email)) {
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"emailErr"</span>).<span class="attr">innerText</span> = <span class="str">"Enter a valid email (e.g. name@gmail.com)"</span>; ok = <span class="kw">false</span>;
+  }
+  <span class="kw">if</span> (pass.<span class="attr">length</span> < <span class="str">6</span>) {
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"passErr"</span>).<span class="attr">innerText</span> = <span class="str">"Password must be at least 6 characters"</span>; ok = <span class="kw">false</span>;
+  }
+  <span class="kw">if</span> (!/^\d{<span class="str">10</span>}$/.<span class="fn">test</span>(mobile)) {
+    <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"mobileErr"</span>).<span class="attr">innerText</span> = <span class="str">"Mobile number must be exactly 10 digits"</span>; ok = <span class="kw">false</span>;
+  }
+  <span class="kw">return</span> ok;   <span class="cmt">// false blocks submission, true allows it</span>
+}
+<span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;&lt;/html&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">Try clicking "Register" with everything blank →
+four red error lines appear at once:
+  Name cannot be empty
+  Enter a valid email (e.g. name@gmail.com)
+  Password must be at least 6 characters
+  Mobile number must be exactly 10 digits
+
+Fix all four (e.g. name="Aditi", email="aditi@gmail.com", password="secret1", mobile="9876543210") → all error lines clear and the form submits successfully.</div></div>
+  </div>
+
+  <div class="project">
+    <h4>2. Simple Calculator (HTML + JavaScript)</h4>
+    <div class="tags"><span>forms</span><span>dropdown</span><span>JS functions</span><span>DOM</span></div>
+    <p>Identical pattern to 2026 paper Q6(a) — see the fully working, ready-to-paste code in the
+    <a href="#paper">Solved Paper, Q6(a)</a> section above. Try adding a 5th operation (modulus %) yourself as
+    practice — just add an &lt;option value="%"&gt; and an <code>else if(op==="%") res = a % b;</code> branch.</p>
+  </div>
+
+  <div class="project">
+    <h4>3. jQuery To-Do List (add / remove / mark complete)</h4>
+    <div class="tags"><span>jQuery</span><span>events</span><span>DOM manipulation</span><span>CSS</span></div>
+    <p>Covers: jQuery selectors, <code>.click()</code>, <code>.append()</code>, <code>.remove()</code>,
+    <code>.toggleClass()</code> — a very common 7–9 mark "build an interactive list" style question.</p>
+<pre><code><span class="tag">&lt;style&gt;</span>
+  <span class="fn">#taskInput</span> { <span class="attr">padding</span>: <span class="str">6px</span>; <span class="attr">width</span>: <span class="str">200px</span>; }
+  <span class="fn">#taskList li</span> { <span class="attr">padding</span>: <span class="str">6px</span>; <span class="attr">border-bottom</span>: <span class="str">1px solid #ddd</span>; <span class="attr">cursor</span>: <span class="str">pointer</span>; }
+  <span class="fn">.done</span> { <span class="attr">text-decoration</span>: <span class="str">line-through</span>; <span class="attr">color</span>: <span class="str">gray</span>; }
+<span class="tag">&lt;/style&gt;</span>
+
+<span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="str">"taskInput"</span> <span class="attr">placeholder</span>=<span class="str">"New task..."</span><span class="tag">&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">id</span>=<span class="str">"addBtn"</span><span class="tag">&gt;</span>Add<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;ul</span> <span class="attr">id</span>=<span class="str">"taskList"</span><span class="tag">&gt;&lt;/ul&gt;</span>
+
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"https://code.jquery.com/jquery-3.7.1.min.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+<span class="tag">&lt;script&gt;</span>
+$(<span class="kw">function</span>() {                                    <span class="cmt">// $(document).ready shorthand</span>
+
+  $(<span class="str">"#addBtn"</span>).<span class="fn">click</span>(<span class="kw">function</span>() {
+    <span class="kw">let</span> task = $(<span class="str">"#taskInput"</span>).<span class="fn">val</span>().<span class="fn">trim</span>();
+    <span class="kw">if</span> (task === <span class="str">""</span>) <span class="kw">return</span>;
+    $(<span class="str">"#taskList"</span>).<span class="fn">append</span>(
+      <span class="str">"&lt;li&gt;" + task + " &lt;button class='delBtn'&gt;✕&lt;/button&gt;&lt;/li&gt;"</span>
+    );
+    $(<span class="str">"#taskInput"</span>).<span class="fn">val</span>(<span class="str">""</span>);
+  });
+
+  <span class="cmt">// click a task's text → toggle "done" style (event delegation, works for future items too)</span>
+  $(<span class="str">"#taskList"</span>).<span class="fn">on</span>(<span class="str">"click"</span>, <span class="str">"li"</span>, <span class="kw">function</span>(e) {
+    <span class="kw">if</span> (!$(e.<span class="attr">target</span>).<span class="fn">is</span>(<span class="str">"button"</span>)) {
+      $(<span class="kw">this</span>).<span class="fn">toggleClass</span>(<span class="str">"done"</span>);
+    }
+  });
+
+  <span class="cmt">// click ✕ button → remove that specific &lt;li&gt;</span>
+  $(<span class="str">"#taskList"</span>).<span class="fn">on</span>(<span class="str">"click"</span>, <span class="str">".delBtn"</span>, <span class="kw">function</span>() {
+    $(<span class="kw">this</span>).<span class="fn">parent</span>(<span class="str">"li"</span>).<span class="fn">remove</span>();
+  });
+
+});
+<span class="tag">&lt;/script&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">Type "Buy groceries" → click Add → a new list item appears:
+  Buy groceries  ✕
+
+Click the task text → strikethrough style toggles on/off (marks complete/incomplete).
+Click the ✕ button → that task is removed from the list immediately.</div></div>
+    <div class="why"><b>Why <code>.on("click", "li", ...)</code> instead of <code>.click()</code> directly on
+    "li":</b> this is <b>event delegation</b> — items added <i>after</i> the page loaded (new tasks) still get
+    the click behaviour, because the listener is actually attached to the parent list and checks which child
+    was clicked, rather than being attached to each &lt;li&gt; individually at page-load time.</div>
+  </div>
+
+  <div class="project">
+    <h4>4. JSON "Contact Book" — form data stored & displayed via JSON</h4>
+    <div class="tags"><span>JSON</span><span>arrays of objects</span><span>DOM</span><span>forms</span></div>
+    <p>Covers: building a JSON array from repeated form submissions, looping through it, and rendering a
+    table — directly maps to the syllabus line "handle HTML form, store data in JSON object... display using jQuery/JavaScript".</p>
+<pre><code><span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="str">"cName"</span> <span class="attr">placeholder</span>=<span class="str">"Name"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="str">"cPhone"</span> <span class="attr">placeholder</span>=<span class="str">"Phone"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;button</span> <span class="attr">onclick</span>=<span class="str">"addContact()"</span><span class="tag">&gt;</span>Save Contact<span class="tag">&lt;/button&gt;</span>
+
+<span class="tag">&lt;table</span> <span class="attr">id</span>=<span class="str">"contactTable"</span> <span class="attr">border</span>=<span class="str">"1"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;tr&gt;&lt;th&gt;</span>Name<span class="tag">&lt;/th&gt;&lt;th&gt;</span>Phone<span class="tag">&lt;/th&gt;&lt;/tr&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+
+<span class="tag">&lt;script&gt;</span>
+<span class="kw">let</span> contacts = [];   <span class="cmt">// this array of {name, phone} objects IS our JSON structure in memory</span>
+
+<span class="kw">function</span> <span class="fn">addContact</span>() {
+  <span class="kw">let</span> name  = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"cName"</span>).<span class="attr">value</span>;
+  <span class="kw">let</span> phone = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"cPhone"</span>).<span class="attr">value</span>;
+  <span class="kw">if</span> (name === <span class="str">""</span> || phone === <span class="str">""</span>) { <span class="kw">alert</span>(<span class="str">"Both fields required"</span>); <span class="kw">return</span>; }
+
+  contacts.<span class="fn">push</span>({ <span class="str">"name"</span>: name, <span class="str">"phone"</span>: phone });   <span class="cmt">// add new JSON object to array</span>
+
+  <span class="kw">let</span> jsonString = <span class="kw">JSON</span>.<span class="fn">stringify</span>(contacts);
+  <span class="kw">localStorage</span>.<span class="fn">setItem</span>(<span class="str">"contacts"</span>, jsonString);   <span class="cmt">// persist as JSON text</span>
+
+  renderTable();
+  <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"cName"</span>).<span class="attr">value</span> = <span class="str">""</span>;
+  <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"cPhone"</span>).<span class="attr">value</span> = <span class="str">""</span>;
+}
+
+<span class="kw">function</span> <span class="fn">renderTable</span>() {
+  <span class="kw">let</span> table = <span class="kw">document</span>.<span class="fn">getElementById</span>(<span class="str">"contactTable"</span>);
+  table.<span class="attr">innerHTML</span> = <span class="str">"&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Phone&lt;/th&gt;&lt;/tr&gt;"</span>;   <span class="cmt">// reset, keep header</span>
+  <span class="kw">for</span> (<span class="kw">let</span> c of contacts) {                                    <span class="cmt">// loop through JSON array</span>
+    <span class="kw">let</span> row = table.<span class="fn">insertRow</span>();
+    row.<span class="fn">insertCell</span>(<span class="str">0</span>).<span class="attr">innerHTML</span> = c.name;
+    row.<span class="fn">insertCell</span>(<span class="str">1</span>).<span class="attr">innerHTML</span> = c.phone;
+  }
+}
+
+<span class="cmt">// on page load, restore any previously saved JSON data</span>
+<span class="kw">window</span>.<span class="fn">onload</span> = <span class="kw">function</span>() {
+  <span class="kw">let</span> saved = <span class="kw">localStorage</span>.<span class="fn">getItem</span>(<span class="str">"contacts"</span>);
+  <span class="kw">if</span> (saved) { contacts = <span class="kw">JSON</span>.<span class="fn">parse</span>(saved); renderTable(); }
+};
+<span class="tag">&lt;/script&gt;</span></code></pre><div class="output"><div class="out-label">Output</div><div class="console">Enter Name="Rohan", Phone="9998887776" → click "Save Contact" →
+the table gains a new row: | Rohan | 9998887776 |
+and the same data is saved as JSON text in localStorage, e.g.:
+[{"name":"Rohan","phone":"9998887776"}]
+
+Refresh the page → onload reads that JSON back with JSON.parse() and the table re-appears automatically (data survives a reload).</div></div>
+    <div class="why"><b>Why this is a good exam answer template:</b> it demonstrates the full JSON round-trip
+    — building a JSON array (<code>push</code>), converting to text (<code>stringify</code>) to store it, and
+    converting back (<code>parse</code>) to use it again — which is exactly what "explain JSON and use it to
+    store/transport data" questions are testing.</div>
+  </div>
+</section>
+
+<hr class="div">
+<div class="note" style="font-size:14px;">
+  <b>How to use this file for revision:</b> go section by section using the left sidebar. For every topic,
+  cover the code and try to rewrite it from the "why" explanation alone — that's what actually gets tested.
+  The Solved Paper section maps every single question to the concept section that explains it, so if an answer
+  feels unclear, jump back to that concept first.
+</div>
+
+</main>
+</div>
+
+<footer>Introduction to Web Programming (DSE/GE4b) — Complete Notes & Solved Paper 6118 · Built for Semester IV revision</footer>
+</body>
+</html>
