@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Internal and External Linking</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightyellow;
+            margin: 25px;
+        }
+
+        h1, h2 {
+            color: darkblue;
+        }
+
+        a {
+            color: blue;
+        }
+
+        section {
+            padding: 15px;
+            margin: 15px 0;
+            background-color: white;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body id="top">
+
+    <h1>Demonstration of HTML Linking</h1>
+
+    <p>
+        This document demonstrates internal and external links
+        using the HTML anchor tag.
+    </p>
+
+    <hr>
+
+    <!-- 1. Internal Links: Same Page Navigation -->
+    <h2>1. Internal Linking (Same Page)</h2>
+
+    <p>Click a link to jump to a section of this page:</p>
+
+    <ul>
+        <li><a href="#internal">Go to Internal Linking</a></li>
+        <li><a href="#external">Go to External Linking</a></li>
+        <li><a href="#email">Go to Email Link</a></li>
+        <li><a href="#bottom">Go to Bottom</a></li>
+    </ul>
+
+    <hr>
+
+    <!-- Internal Linking Section -->
+    <section id="internal">
+        <h2>2. Internal Linking Explained</h2>
+
+        <p>
+            Internal linking connects one section or page
+            of the same website to another.
+        </p>
+
+        <p>
+            Example:
+            <a href="#top">Return to Top</a>
+        </p>
+
+        <p>
+            The href="#top" link moves the user to the element
+            whose id is "top".
+        </p>
+    </section>
+
+    <!-- 3. External Links -->
+    <section id="external">
+        <h2>3. External Linking</h2>
+
+        <p>
+            External links connect to another website.
+        </p>
+
+        <ul>
+            <li>
+                <a href="https://www.google.com/">
+                    Open Google in the Same Tab
+                </a>
+            </li>
+
+            <li>
+                <a href="https://www.wikipedia.org/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Open Wikipedia in a New Tab
+                </a>
+            </li>
+
+            <li>
+                <a href="https://www.youtube.com/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Open YouTube in a New Tab
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <!-- 4. Linking to Another HTML Page -->
+    <section>
+        <h2>4. Linking to Another HTML Page</h2>
+
+        <p>
+            <a href="about.html">Open the About Page</a>
+        </p>
+
+        <p>
+            Note: Create an about.html file in the same folder
+            for this link to work.
+        </p>
+    </section>
+
+    <hr>
+
+    <!-- 5. Image as a Link -->
+    <section>
+        <h2>5. Image Linking</h2>
+
+        <a href="https://www.wikipedia.org/"
+           target="_blank"
+           rel="noopener noreferrer">
+            <img
+                src="https://placehold.co/180x80/003366/FFFFFF?text=Click+Here"
+                alt="Click to visit Wikipedia"
+                width="180"
+            >
+        </a>
+
+        <p>Click the image to open Wikipedia.</p>
+    </section>
+
+    <hr>
+
+    <!-- 6. Email Link -->
+    <section id="email">
+        <h2>6. Email Linking</h2>
+
+        <p>
+            <a href="mailto:example@email.com">
+                Send an Email
+            </a>
+        </p>
+
+        <p>
+            Clicking this link usually opens the default email
+            application with the recipient filled in.
+        </p>
+    </section>
+
+    <hr>
+
+    <!-- 7. Back to Top -->
+    <section id="bottom">
+        <h2>7. Back to Top Link</h2>
+
+        <p>
+            <a href="#top">Click here to return to the top</a>
+        </p>
+    </section>
+
+    <hr>
+
+    <p>
+        <b>End of Internal and External Linking Demonstration</b>
+    </p>
+
+</body>
+</html>

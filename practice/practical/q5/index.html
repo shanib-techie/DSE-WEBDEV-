@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+   <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightblue;
+        }
+
+        h1 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        form {
+            background-color: white;
+            width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid navy;
+            border-radius: 10px;
+        }
+
+        label {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            margin-top: 5px;
+        }
+
+        .text-input, select {
+            width: 95%;
+            padding: 7px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Student Registration Form</h1>
+
+    <form action="#" method="get">
+
+        <!-- I. Text Boxes -->
+        <h3>Personal Details</h3>
+
+        <label for="name">Full Name:</label><br>
+        <input class="text-input" type="text"
+               id="name" name="student_name"
+               placeholder="Enter your full name"
+               required>
+         <label for="name">name: </label>      
+        <input type="text" placeholder="enter your name">
+        <br>
+
+        <label for="email">Email:</label><br>
+        <input class="text-input" type="email"
+               id="email" name="email"
+               placeholder="Enter your email"
+               required>
+
+        <br>
+
+        <label for="password">Password:</label><br>
+        <input class="text-input" type="password"
+               id="password" name="password"
+               minlength="8" maxlength="12">
+
+        <br>
+
+        <label for="dob">Date of Birth:</label><br>
+        <input type="date" id="dob" name="dob" required>
+
+        <br>
+
+        <!-- II. Dropdown Box -->
+        <label for="course">Select Course:</label><br>
+        <select id="course" name="course" required>
+            <option value="">-- Select Course --</option>
+            <option value="bsc_cs">B.Sc. Computer Science</option>
+            <option value="bca">BCA</option>
+            <option value="btech">B.Tech</option>
+            <option value="bcom">B.Com.</option>
+        </select>
+        <lable >HOBBIES</lable>
+        <BR>
+             <select id="hobbies">
+            <option value="select one">--select any one</option>
+            <option value="mobile game">mobile game</option>
+            <option value="tennis">tennis</option>
+            <option value="soccer">soccer</option>
+            <option value="backbeating">backn=beating</option>
+            </select>
+        <br>
+
+        <!-- III. Radio Buttons -->
+        <h4><b>Gender:</b></h4>
+
+        <input type="radio" id="male"
+               name="gender" value="male" required>
+
+        <label for="male">Male</label>
+
+        <input type="radio" id="female"
+               name="gender" value="female">
+
+        <label for="female">Female</label>
+
+        <input type="radio" id="other"
+               name="gender" value="other">
+
+        <label for="other">Other</label>
+
+        <br>
+
+
+        <h5><i>family status</i></h5>
+          <input type="radio" name="familystatus" value="3">
+          <label>3</label>
+
+          <input type="radio" name="familystatus" value="4">
+          <label for="4">4</label>
+
+          <input type="radio" name="familystatus" value="5" required>
+          <label>5</label>
+        <!-- IV. Checkboxes -->
+        <p><b>Hobbies:</b></p>
+
+        <input type="checkbox" id="reading"
+               name="hobbies" value="reading">
+        <label for="reading">Reading</label><br>
+
+        <input type="checkbox" id="sports"
+               name="hobbies" value="sports">
+        <label for="sports">Sports</label><br>
+
+        <input type="checkbox" id="coding"
+               name="hobbies" value="coding">
+        <label for="coding">Coding</label><br>
+
+        <!-- V. Submit and Reset -->
+        <div class="buttons">
+            <input type="submit" value="Register">
+            <input type="reset" value="Reset Form">
+        </div>
+
+    </form>
+
+    <hr>
+
+    <h2 style="text-align:center;">
+        End of Student Registration Form
+    </h2>
+
+</body>
+</html>

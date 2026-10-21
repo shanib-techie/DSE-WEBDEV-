@@ -1,0 +1,28 @@
+ body {
+            background-color: lightyellow;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: darkblue;
+            text-align: center;
+            font-family: Georgia, serif;
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+            color: red;
+            font-weight: bold;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .wide-text {
+            font-stretch: expanded;
+            font-size: 24px;
+            color: purple;
+        }

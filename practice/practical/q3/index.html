@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Images in HTML</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightyellow;
+        }
+
+        h1, h2 {
+            color: darkblue;
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: lightblue;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .table-bg {
+            background-image: url("https://placehold.co/600x300/ADD8E6/000000?text=Table+Background");
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Demonstration of Images in HTML</h1>
+    <hr>
+
+    <!-- 1. Image as a Logo -->
+    <h2>1. Image as a Logo</h2>
+
+    <div style="text-align: center;">
+        <img
+            class="logo"
+            src="https://placehold.co/100x100/003366/FFFFFF?text=LOGO"
+            alt="Website Logo"
+        >
+        <p>Our Website Logo</p>
+    </div>
+
+    <hr>
+
+    <!-- 2. Image inside a Table Cell -->
+    <h2>2. Images as Table Cell Data</h2>
+
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Image</th>
+            <th>Price</th>
+        </tr>
+
+        <tr>
+            <td>Laptop</td>
+            <td>
+                <img
+                    src="https://placehold.co/100x70?text=Laptop"
+                    alt="Laptop"
+                    width="100"
+                >
+            </td>
+            <td>₹50,000</td>
+        </tr>
+
+        <tr>
+            <td>Mobile</td>
+            <td>
+                <img
+                    src="https://placehold.co/100x70?text=Mobile"
+                    alt="Mobile phone"
+                    width="100"
+                >
+            </td>
+            <td>₹20,000</td>
+        </tr>
+
+        <tr>
+            <td>Headphones</td>
+            <td>
+                <img
+                    src="https://placehold.co/100x70?text=Headphones"
+                    alt="Headphones"
+                    width="100"
+                >
+            </td>
+            <td>₹2,000</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <!-- 3. Image as Table Background -->
+    <h2>3. Image as Table Background</h2>
+
+    <table class="table-bg">
+        <tr>
+            <th>Subject</th>
+            <th>Marks</th>
+        </tr>
+
+        <tr>
+            <td>HTML</td>
+            <td>90</td>
+        </tr>
+
+        <tr>
+            <td>CSS</td>
+            <td>85</td>
+        </tr>
+
+        <tr>
+            <td>JavaScript</td>
+            <td>88</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <!-- 4. Clickable Image -->
+    <h2>4. Clickable Image</h2>
+
+    <div style="text-align: center;">
+        <a href="https://www.wikipedia.org/" target="_blank">
+            <img
+                src="https://placehold.co/200x100/228B22/FFFFFF?text=Visit+Wikipedia"
+                alt="Click to visit Wikipedia"
+                width="200"
+            >
+        </a>
+
+        <p>Click the image to open Wikipedia.</p>
+    </div>
+
+    <hr>
+
+    <!-- 5. Clickable Icons -->
+    <h2>5. Clickable Icons</h2>
+
+    <div style="text-align: center;">
+
+        <a href="https://www.google.com/" target="_blank">
+            <img
+                class="icon"
+                src="https://placehold.co/40x40/4285F4/FFFFFF?text=G"
+                alt="Google"
+            >
+        </a>
+
+        <a href="https://www.youtube.com/" target="_blank">
+            <img
+                class="icon"
+                src="https://placehold.co/40x40/FF0000/FFFFFF?text=Y"
+                alt="YouTube"
+            >
+        </a>
+
+        <a href="https://www.wikipedia.org/" target="_blank">
+            <img
+                class="icon"
+                src="https://placehold.co/40x40/333333/FFFFFF?text=W"
+                alt="Wikipedia"
+            >
+        </a>
+
+        <p>Click any icon to visit its website.</p>
+    </div>
+
+    <hr>
+
+    <!-- 6. Image as Webpage Background -->
+    <h2>6. Image as Webpage Background</h2>
+
+    <div style="
+        background-image:"C:\Users\Admin\OneDrive\Desktop\SEMESTER_5TH\INTRO_TO_WEB_DEVELOPMENT\practice\assignment\ques3\image.png";
+        background-size: cover;
+        background-position: center;
+        padding: 50px;
+        text-align: center;
+    ">
+        <h2>Welcome to My Webpage</h2>
+        <p>This section uses a background image.</p>
+    </div>
+
+    <hr>
+
+    <p style="text-align: center;">
+        <b>End of HTML Image Demonstration</b>
+    </p>
+
+</body>
+</html>
