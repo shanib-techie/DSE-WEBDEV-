@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f7;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 450px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+            color: #24527a;
+        }
+
+        label {
+            display: block;
+            margin-top: 14px;
+        }
+
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #2878b5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style> -->
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Registration Form</h2>
+
+    <form onsubmit="return validateForm()">
+
+        <label>Name:</label>
+        <input type="text" id="name" placeholder="Enter name">
+
+        <label>Email:</label>
+        <input type="text" id="email" placeholder="Enter email">
+
+        <label>Password:</label>
+        <input type="password" id="password"
+               placeholder="Minimum 6 characters" min="4" max="10">
+
+        <label>Roll Number:</label>
+        <input type="text" id="roll"
+               placeholder="7 digits">
+
+        <label>Phone Number:</label>
+        <input type="text" id="phone"
+               placeholder="10 digits">
+
+        <button type="submit">Register</button>
+
+        <p id="message"></p>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let password = document.getElementById("password").value;
+        let roll = document.getElementById("roll").value.trim();
+        let phone = document.getElementById("phone").value.trim();
+
+        let message = document.getElementById("message");
+
+        // 1. Empty field validation
+        if (name === "" || email === "" ||
+            password === "" || roll === "" || phone === "") {
+
+            message.style.color = "red";
+            message.innerHTML = "Please fill all fields!";
+            return false;
+        }
+
+        // 2. Email validation
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email)) {
+            message.style.color = "red";
+            message.innerHTML = "Please enter a valid email!";
+            return false;
+        }
+
+        // 3. Password validation
+        if (password.length < 6) {
+            message.style.color = "red";
+            message.innerHTML =
+                "Password must contain at least 6 characters!";
+            return false;
+        }
+
+        // 4. Roll number must contain exactly 7 digits
+        if (!/^\d{7}$/.test(roll)) {
+            message.style.color = "red";
+            message.innerHTML =
+                "Roll number must contain exactly 7 digits!";
+            return false;
+        }
+
+        // 5. Phone number must contain exactly 10 digits
+        if (!/^\d{10}$/.test(phone)) {
+            message.style.color = "red";
+            message.innerHTML =
+                "Phone number must contain exactly 10 digits!";
+            return false;
+        }
+
+        message.style.color = "green";
+        message.innerHTML = "Registration successful!";
+        return false;
+    }
+</script>
+
+</body>
+</html>

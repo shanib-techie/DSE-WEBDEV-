@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events Practice</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px #cccccc;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1d3557;
+        }
+
+        h2 {
+            color: #457b9d;
+            font-size: 19px;
+        }
+
+        input {
+            padding: 10px;
+            width: 90%;
+            margin: 8px 0;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 16px;
+            margin: 8px 4px;
+            border: none;
+            border-radius: 5px;
+            background: #2878b5;
+            color: white;
+            cursor: pointer;
+        }
+
+        #hoverBox {
+            padding: 20px;
+            background: #dbeafe;
+            text-align: center;
+            border-radius: 6px;
+        }
+
+        #result {
+            color: #087443;
+            font-weight: bold;
+            min-height: 24px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <h1>JavaScript Events</h1>
+
+    <!-- 1. onkeydown and onkeyup -->
+    <h2>1. Keyboard Events</h2>
+
+    <input type="text"
+           placeholder="Type something"
+           onkeydown="keyDownEvent()"
+           onkeyup="keyUpEvent()"
+           onkeypress="keyPressEvent()">
+
+    <p id="keyResult">Keyboard event will appear here.</p>
+
+    <!-- 2. onfocus and onblur -->
+    <h2>2. Focus Events</h2>
+
+    <input type="text"
+           placeholder="Click here"
+           onfocus="focusEvent()"
+           onblur="blurEvent()">
+
+    <p id="focusResult"></p>
+
+    <!-- 3. onselect -->
+    <h2>3. Text Selection</h2>
+
+    <input type="text"
+           value="Select this text"
+           onselect="selectEvent()">
+
+    <p id="selectResult"></p>
+
+    <!-- 4. onmouseover and onmouseout -->
+    <h2>4. Mouse Events</h2>
+
+    <div id="hoverBox"
+         onmouseover="mouseOverEvent()"
+         onmouseout="mouseOutEvent()">
+        Move your mouse over this box!
+    </div>
+
+    <!-- 5. onclick and ondblclick -->
+    <h2>5. Click Events</h2>
+
+    <button onclick="clickEvent()">Single Click</button>
+
+    <button ondblclick="doubleClickEvent()">Double Click</button>
+
+    <p id="clickResult"></p>
+
+    <!-- 6. onsubmit -->
+    <h2>6. Form Submit Event</h2>
+
+    <form onsubmit="submitEvent(event)">
+        <input type="text"
+               id="username"
+               placeholder="Enter your name"
+               required>
+
+        <button type="submit">Submit Form</button>
+    </form>
+
+    <p id="result"></p>
+
+<!-- </div>
+
+<script>
+    function keyDownEvent() {
+        document.getElementById("keyResult").innerHTML =
+            "onkeydown: Key pressed!";
+    }
+
+    function keyUpEvent() {
+        document.getElementById("keyResult").innerHTML =
+            "onkeyup: Key released!";
+    }
+
+    function keyPressEvent() {
+        console.log("onkeypress: Character key pressed!");
+    }
+
+    function focusEvent() {
+        document.getElementById("focusResult").innerHTML =
+            "onfocus: Input selected!";
+    }
+
+    function blurEvent() {
+        document.getElementById("focusResult").innerHTML =
+            "onblur: Focus removed!";
+    }
+
+    function selectEvent() {
+        document.getElementById("selectResult").innerHTML =
+            "onselect: Text selected!";
+    }
+
+    function mouseOverEvent() {
+        let box = document.getElementById("hoverBox");
+        box.style.backgroundColor = "lightgreen";
+        box.innerHTML = "Mouse is over the box!";
+    }
+
+    function mouseOutEvent() {
+        let box = document.getElementById("hoverBox");
+        box.style.backgroundColor = "#dbeafe";
+        box.innerHTML = "Move your mouse over this box!";
+    }
+
+    function clickEvent() {
+        document.getElementById("clickResult").innerHTML =
+            "Single click event executed!";
+    }
+
+    function doubleClickEvent() {
+        document.getElementById("clickResult").innerHTML =
+            "Double click event executed!";
+    }
+
+    function submitEvent(event) {
+        event.preventDefault();
+
+        let name = document.getElementById("username").value;
+
+        document.getElementById("result").innerHTML =
+            "Welcome, " + name + "! Form submitted successfully.";
+    }
+</script>
+
+</body>
+</html>
+ -->
+

@@ -42,7 +42,61 @@ function showName() {
 function changeColor() {
     document.getElementById("page").style.backgroundColor = "lightblue";
 }
-// var name = 99;
+
+function singleClick() {
+    document.getElementById("result").innerHTML = "Single click detected!";
+}
+
+function doubleClick() {
+    document.getElementById("result").innerHTML = "Double click detected!";
+}
+
+function changecol(){
+    document.getElementById("changecol").innerHTML ="now text chnage"
+}
+
+
+function addits10percent(){
+    let  num = Number(document.getElementById("num").innerHTML);
+    document.getElementById("num").innerHTML = num *1.1;
+
+}
+
+function changeColor(){
+    document.getElementById("yellow").style.backgroundColor = "yellow";
+    document.getElementById("yellow").style.border = "2px solid black";
+}
+
+
+
+// function changeColor_onmouseover(){
+//     document.getElementById("demo").style.color = "pink";
+//     document.getElementById("demo").style.border = "5px dotted yellow";
+// }
+// function resetColor (){
+//         document.getElementById("demo").style.color = "black";
+
+// }
+function keyDown() {
+    document.getElementById("result").innerHTML =
+        "Key pressed!";
+}
+
+function keyUp() {
+    document.getElementById("result").innerHTML =
+        "Key released!";
+}
+
+function focusEvent() {
+    document.getElementById("result").innerHTML =
+        "Input box selected!";
+}
+
+function blurEvent() {
+    document.getElementById("result").innerHTML =
+        "You left the input box!";
+}
+// // var name = 99;
 
 // let num = 55;
 
