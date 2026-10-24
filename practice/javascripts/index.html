@@ -9,6 +9,34 @@
     <h1>JavaScript Learning</h1>
 <br>
 
+<p id="demo">Old Text</p>
+
+<script>
+    document.getElementById("demo").innerHTML = "New Text";
+</script>
+
+
+<input type="date" id="dt">
+<button onclick="showdate()">date</button>
+<h1 id="dateshow"></h1>
+
+<script>
+    function showdate(){
+        let n = document.getElementById("dt").value;
+        document.getElementById("dateshow").innerHTML = "<h2><b> your appointment date =" + n + "</b></h2>";
+    }
+</script>
+
+<!-- <input type="text" id="name">
+<button onclick="showName()">Show</button>
+<p id="result"></p>
+
+<script>
+    function showName() {
+        let n = document.getElementById("name").value;
+        document.getElementById("result").innerHTML = n;
+    } -->
+</script>
 <h5><i>
     console.log(5 + 3);
 console.log("5" + 3);

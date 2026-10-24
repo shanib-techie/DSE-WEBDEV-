@@ -1,0 +1,35 @@
+/* 
+nav {
+    background-color: black;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    font-size: 18px;
+}
+
+nav a:hover {
+    background-color: gray;
+} */
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 30px;
+    background-color: black;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+       padding: 15px;
+    font-size: 18px;
+}
+
+nav a:hover{
+    background-color: pink;
+}
