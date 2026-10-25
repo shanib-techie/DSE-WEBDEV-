@@ -1,15 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <style</style> -->
-     <link rel="stylesheet" href="style.css">
+    <title>Padding vs Margin</title>
+
+    <style>
+        .box1 {
+            background-color: lightblue;
+            border: 3px solid blue;
+            height: 60px;
+
+            padding: 30px;
+            margin:0px 0px 90px 10px;
+        }
+
+        .box2 {
+            background-color: lightgreen;
+            border: 3px solid green;
+            width: 250px;
+            height: 250px;
+            /* text-align: center; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            margin: 40px;
+        }
+    </style>
 </head>
+
 <body>
-    <header id="header">
-        <h1 class="head">HELLO WORLD</h1>
-    </header>
+
+    <div class="box1">
+        This is Box 1
+    </div>
+
+    <div class="box2">
+        This is Box 2
+    </div>
+
 </body>
 </html>
